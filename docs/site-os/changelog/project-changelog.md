@@ -4,6 +4,65 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-23 — Batch 1: Foundation Scaffold
+
+**Workflow phase**: Phase D (Strategy and Build) — Batch 1 (Foundation Scaffold)
+**Workflow mode**: Fast Build Batch under standing approval (Phase C invocation)
+
+### Context
+
+Phase C policy invocation cleared the way for foundation work. STEP 7 produced the Gate 1 inspection + Gate 2 file scope plan; the project owner bundled the 7 Hard Stops (package.json, npm install, next.config.mjs, app routes, metadata, schema helpers, Cloudflare-config-equivalent static export config) into a single STEP 8 approval. Approved sub-decisions: Tailwind v3.4, Next.js 15.x, `reactStrictMode: true`, `app/page.tsx` Option A (homepage shell with placeholder-safe sections).
+
+### Files Created (24 new)
+
+**Root (7)**: `package.json`, `next.config.mjs`, `tsconfig.json`, `tailwind.config.ts`, `postcss.config.mjs`, `README.md` (NEW); `.gitignore` (MODIFIED, +`node_modules/`, `.next/`, `out/`, `.env*`, etc.)
+
+**App (4)**: `app/layout.tsx`, `app/page.tsx`, `app/not-found.tsx`, `app/globals.css`
+
+**Lib (4)**: `lib/constants/site.ts`, `lib/constants/routes.ts`, `lib/constants/seo.ts`, `lib/utils.ts`
+
+**Components (9)**: `components/layout/Header.tsx`, `components/layout/Footer.tsx`, `components/sections/HeroSection.tsx`, `components/sections/CTASection.tsx`, `components/sections/SectionHeader.tsx`, `components/sections/FAQSection.tsx`, `components/forms/QuoteFormPlaceholder.tsx`, `components/cards/ServiceCard.tsx`, `components/media/ServiceImagePlaceholder.tsx`
+
+**Docs (1 new + 2 modified)**: `docs/site-os/qa/batch-1-foundation-gate-plan.md` (NEW Gate 2 source-of-truth artifact); `docs/site-os/changelog/project-changelog.md` (this update); `docs/site-os/implementation-log.md` (Batch 1 entry appended)
+
+### Dependencies Installed
+
+5 runtime + 10 dev = 15 top-level packages. See `docs/site-os/qa/batch-1-foundation-gate-plan.md` §4. No external UI library, no analytics SDK, no form library, no state library — deliberate minimalism so brand identity decisions are not pre-empted.
+
+### Static Export Configuration
+
+`next.config.mjs` sets `output: 'export'`, `images.unoptimized: true`, `trailingSlash: true`, `reactStrictMode: true`. Build emits `out/` for Cloudflare Pages publish.
+
+### Placeholder Strategy Preserved
+
+All MISSING — FLAGGED items use safe placeholders. Phone, email, address, hours, social, brand colors, brand fonts, logo, photography all remain unresolved with no invented values. Helpers in `lib/constants/seo.ts` OMIT unverified schema fields entirely rather than emitting placeholder values. `QuoteFormPlaceholder` does not submit anywhere; `ServiceImagePlaceholder` is a neutral surface with no text or fake imagery.
+
+### Launch Blockers Carry Forward
+
+All 12 launch blockers from `corporate-haven-build-context.md §12` remain. Resolution path: `prompts/updates/content-update-prompt.md`.
+
+### No Final Copy Written
+
+Every customer-facing string on the homepage carries a `TODO-COPY:` comment. Final homepage copy comes from `site-os-master/prompts/individual-homepage-research-prompt.md` + `individual-homepage-implementation-prompt.md` in a subsequent batch. The 5 placeholder FAQs are written from CONFIRMED facts only and exist to exercise the FAQPage JSON-LD path.
+
+### Validation
+
+(Recorded after Gate 3 run — see `docs/site-os/implementation-log.md` 2026-05-23 Batch 1 entry.)
+
+### Cross-Repo
+
+Site OS Master remained at HEAD `36f9092` with clean working tree throughout Batch 1.
+
+### Commit
+
+STEP 8 commit pending review.
+
+### Next Step
+
+STEP 9 — review the staged scope, run `pre-commit-qa-prompt.md`, and create the Batch 1 commit (`feat(batch-1): foundation scaffold` or similar). Then proceed to first high-value page work (homepage research prompt or another Phase D start per owner direction).
+
+---
+
 ## 2026-05-23 — STEP 5A: Root Site OS Substrate Added
 
 **Workflow phase**: New-client startup — Phase B step 12a preconditions

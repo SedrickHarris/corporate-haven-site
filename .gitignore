@@ -1,2 +1,34 @@
 # Claude Code session state (per-machine, not source)
 .claude/
+
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment files (never commit secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Deploy / hosting metadata
+.vercel/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor swap files
+*.swp
+*.swo
+
+# PEM keys (never commit)
+*.pem

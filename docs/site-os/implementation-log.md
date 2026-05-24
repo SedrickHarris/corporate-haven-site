@@ -27,6 +27,44 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-23 — Batch 1: Foundation Scaffold (STEP 8)
+
+- **Phase / Tier**: Phase D — Batch 1 (Foundation Scaffold)
+- **Workflow**: Fast Build Batch under standing approval; `site-os-master/docs/new-client-startup-workflow.md` Phase D step 17 Gate 3
+- **Scope (27 paths)**: 24 new files + 3 modifications. Full scope recorded at `docs/site-os/qa/batch-1-foundation-gate-plan.md`.
+  - Root (7): `package.json`, `next.config.mjs`, `tsconfig.json`, `tailwind.config.ts`, `postcss.config.mjs`, `README.md` (new); `.gitignore` (modified)
+  - App (4): `app/layout.tsx`, `app/page.tsx`, `app/not-found.tsx`, `app/globals.css`
+  - Lib (4): `lib/constants/site.ts`, `lib/constants/routes.ts`, `lib/constants/seo.ts`, `lib/utils.ts`
+  - Components (9): `Header`, `Footer`, `HeroSection`, `CTASection`, `SectionHeader`, `FAQSection`, `QuoteFormPlaceholder`, `ServiceCard`, `ServiceImagePlaceholder`
+  - Docs (3): `docs/site-os/qa/batch-1-foundation-gate-plan.md` (new), `docs/site-os/changelog/project-changelog.md` (modified), this log (modified)
+- **Source standard / prompt**:
+  - Gate 2 plan: `docs/site-os/qa/batch-1-foundation-gate-plan.md`
+  - Layout standards: `docs/site-os/service-business-conversion-layout.md`, `docs/site-os/service-card-image-placeholder-standard.md`
+  - Content safety: `docs/site-os/no-fake-data-policy.md`
+  - File-scope safety: `docs/site-os/file-scope-and-git-safety-policy.md`
+- **Dependencies installed** (5 runtime + 10 dev): `next ^15.0.0`, `react ^18.3.0`, `react-dom ^18.3.0`, `clsx ^2.1.1`, `tailwind-merge ^2.5.0`, `typescript ^5.6.0`, `@types/node ^22.0.0`, `@types/react ^18.3.0`, `@types/react-dom ^18.3.0`, `tailwindcss ^3.4.0`, `postcss ^8.4.0`, `autoprefixer ^10.4.0`, `eslint ^8.57.0`, `eslint-config-next ^15.0.0`. `npm install` ran clean (exit 0).
+- **Static export configuration**: `next.config.mjs` sets `output: 'export'`, `images.unoptimized: true`, `trailingSlash: true`, `reactStrictMode: true`. `next build` emits to `out/` for Cloudflare Pages.
+- **Placeholder strategy**:
+  - All phone / email / address / hours / social are `null` in `SITE` constant with TODO comments
+  - Brand color tokens are neutral CSS variables with TODO-COLOR comments
+  - Brand fonts are system stack fallbacks with TODO-FONT comments
+  - Logo is text wordmark fallback (no fake SVG)
+  - Helpers in `lib/constants/seo.ts` omit unverified schema fields entirely (address, logo, AggregateRating, Review, priceRange, openingHours)
+  - `QuoteFormPlaceholder` does not submit anywhere
+  - `ServiceImagePlaceholder` is a neutral surface with no embedded text or fake imagery
+  - All customer-facing copy on the homepage carries `TODO-COPY:` comments
+- **TODOs**: All 12 launch blockers + 12 content blockers from `corporate-haven-build-context.md` continue to apply. None resolved in this batch.
+- **Validation**: (recorded by STEP 8 final report after `npm run lint`, `npm run type-check`, `npm run build`)
+- **Cross-repo**: Site OS Master `git status` clean, HEAD `36f9092` unchanged.
+- **Commit hash**: pending (STEP 8 staging + commit to follow per owner approval)
+- **Notes**:
+  - No high-value page copy written (per Path B decision — foundation first, page research after)
+  - No external UI library installed; brand identity decisions not yet pre-empted
+  - No deploy attempted (separate Hard Stop, not in this batch)
+  - Standing approval applied for Gate 1 → Gate 2 → Gate 3 flow inside this Fast Build Batch
+
+---
+
 ### 2026-05-23 — Phase B Scaffold + Phase B Root Substrate (STEP 4 + STEP 4B + STEP 5A)
 
 - **Phase / Tier**: New-client startup — Phase B steps 8–12 + step 12a preconditions

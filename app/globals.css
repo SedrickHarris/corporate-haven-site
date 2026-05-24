@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* TODO-COLOR: brand tokens MISSING — FLAGGED per docs/brand-guide.md.
+       Values below are neutral placeholders until owner palette lands.
+       Format: space-separated RGB channel values (consumed by Tailwind via <alpha-value>). */
+    --brand-primary: 31 41 55;
+    --brand-secondary: 75 85 99;
+    --brand-accent: 17 24 39;
+    --brand-surface: 249 250 251;
+    --brand-ink: 17 24 39;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white antialiased;
+    color: rgb(var(--brand-ink));
+  }
+}
