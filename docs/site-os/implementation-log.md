@@ -27,6 +27,25 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-23 — STEP 10A: Homepage Research Artifact
+
+- **Phase / Tier**: Phase D — STEP 10A (Homepage research only, pre-implementation)
+- **Workflow**: `site-os-master/prompts/individual-homepage-research-prompt.md` — Level 5 Beyond-Elite, two-step (research → implementation)
+- **Scope**: Homepage research only. Output artifact authored and saved to `docs/site-os/outputs/homepage-research.md`. Zero source code touched. No app code, components, lib, package.json, configs, dependencies, or build artifacts changed.
+- **Output**: `docs/site-os/outputs/homepage-research.md`
+- **Artifact contents** (25 sections): Homepage Purpose · Primary Audience Analysis · Search Intent Analysis · Keyword Type Research · Keyword Mapping · SEO Strategy · AEO Strategy · GEO and Local SEO Strategy · SERP and Competitor Opportunity Notes · Conversion Strategy · Trust-Building Strategy · Homepage Section Strategy · Recommended H1 · Recommended Metadata · Recommended CTA Hierarchy · AEO FAQ Research (40 candidate questions across 9 categories) · Recommended Visible Homepage FAQ Set (10) · Schema Plan (Organization, LocalBusiness, WebSite, FAQPage) · Internal Linking Plan · Image and Alt Text Plan · Front-End Design Notes · Framer Motion Notes (planning only, not approved) · Technical SEO Notes · Missing Data and TODO List · Content Preservation Notes for Build Prompt.
+- **Source standard / prompt**: `site-os-master/prompts/individual-homepage-research-prompt.md`; `docs/site-os/no-fake-data-policy.md`; `docs/site-os/service-business-conversion-layout.md`; `docs/site-os/service-card-image-placeholder-standard.md`; `docs/site-os/reference/seo-aeo-content-standards.md`; `docs/site-os/corporate-haven-build-context.md`.
+- **No source code touched**: Confirmed. `app/`, `components/`, `lib/`, `package.json`, `package-lock.json`, `next.config.mjs`, `tailwind.config.ts`, `tsconfig.json` all untouched.
+- **No final homepage implementation completed**: This artifact is research only. Source-code changes are deferred to STEP 10B.
+- **No fake data added**: All recommended copy is CONFIRMED or APPROVED PLACEHOLDER only. Phone, email, address, hours, prices, reviews, ratings, licenses, testimonials, owner names, brand assets all remain MISSING — FLAGGED. No invented business claims in the artifact.
+- **Carry-forward**: All 14 launch blockers and 12 content blockers from `corporate-haven-build-context.md` continue to apply. Artifact enumerates them in §24 (Missing Data and TODO List) and §25 (Content Preservation Notes for Build Prompt).
+- **Validation**: Skipped lint/type-check/build per Site OS Master Fast Build Batch step 10 (no app code changed). Artifact validation: all 25 required sections present, no invented business data, all keyword and FAQ recommendations grounded in CONFIRMED or APPROVED PLACEHOLDER facts.
+- **Cross-repo**: Site OS Master untouched (HEAD `36f9092`, clean).
+- **Commit hash**: pending (STEP 10A commit to follow per owner direction).
+- **Next step**: **STEP 10B — Homepage content and build prompt.** Produce the implementation plan and the Gate 1/Gate 2/Gate 3 build prompt that consumes this research artifact and updates `app/page.tsx`, `app/layout.tsx` (if root JSON-LD lands), and any constants tweaks. Foundation files stay untouched.
+
+---
+
 ### 2026-05-23 — Batch 1: Foundation Scaffold (STEP 8)
 
 - **Phase / Tier**: Phase D — Batch 1 (Foundation Scaffold)
