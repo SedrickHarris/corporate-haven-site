@@ -4,6 +4,85 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-23 — Tailwind Token Batch: Corporate Haven Brand Palette Wired
+
+**Workflow phase**: Phase D token-wiring batch (between brand-decision update and STEP 10B homepage implementation)
+
+### Summary
+
+The 11-token APPROVED PLACEHOLDER palette from `docs/brand-guide.md §0` is now wired into `app/globals.css` (as RGB channel CSS variables) and exposed through `tailwind.config.ts` (as `theme.colors.brand.*` utility classes). Existing component class names automatically pick up the new approved colors via the CSS variable system — no component edits required.
+
+### Token Values Applied
+
+| Token | Hex | Tailwind class |
+|---|---|---|
+| Primary Ink | `#111827` | `text-brand-ink`, `bg-brand-ink` |
+| Corporate Haven Deep Teal | `#0B3440` | `text-brand-primary`, `bg-brand-primary` |
+| Primary Button Hover | `#0B3440` | `bg-brand-primary-hover`, `hover:bg-brand-secondary` (legacy alias) |
+| Logo Teal / Blue-Gray | `#5F7F83` | `text-brand-logo-teal`, `bg-brand-logo-teal` |
+| Mist Background | `#EAF1F1` | `bg-brand-mist` |
+| Warm White | `#FAF8F3` | `bg-brand-warm`, `bg-brand-surface` (legacy alias) |
+| Soft Gray | `#F5F6F6` | `bg-brand-soft-gray` |
+| Border Gray | `#D9DEDE` | `border-brand-border` |
+| Primary Button | `#000000` | `bg-brand-button` |
+| Button Text | `#FFFFFF` | `text-brand-button-text` |
+| Warm Accent | `#C9A46A` | `text-brand-accent`, `bg-brand-accent` |
+
+### Visible Changes (no component edits required)
+
+- **Eyebrow + accent text + outlines**: any `text-brand-primary` / `outline-brand-primary` / `bg-brand-primary` usage now renders in Deep Teal (was neutral slate)
+- **Button hover states**: `hover:bg-brand-secondary` (Header CTA, Hero primary CTA, 404 page CTA, etc.) now hovers to Deep Teal (was neutral gray)
+- **Alternating section backgrounds**: `bg-brand-surface` (used in app/page.tsx Locations section and HeroSection wrapper) now renders in Warm White (was cool gray)
+
+### Files Changed (4)
+
+- `app/globals.css` (replaced 5 placeholder CSS variables with 13 approved RGB channel triples — 11 user-required + 2 legacy aliases)
+- `tailwind.config.ts` (extended `theme.colors.brand` to expose all 13 tokens to Tailwind utilities)
+- `docs/site-os/implementation-log.md` (new top entry)
+- `docs/site-os/changelog/project-changelog.md` (this entry)
+
+### Not Changed
+
+- ❌ No page copy changed
+- ❌ No navigation changed
+- ❌ No dependencies added
+- ❌ No deploy attempted
+- ❌ No components edited (per scope rule)
+- ❌ No fonts loaded (typography direction stays APPROVED PLACEHOLDER with system fallbacks until owner confirms Manrope/Poppins/Montserrat + Source Sans 3/Inter and licenses)
+- ❌ No images added
+- ❌ No Framer Motion
+- ❌ No API integrations
+- ❌ No analytics
+- ❌ No schema changed
+
+### Carry-Forward
+
+- Owner-supplied logo asset still MISSING — FLAGGED (Header still uses text wordmark)
+- Property + Cleveland + lifestyle photography still MISSING — FLAGGED
+- Phone, address, hours, license, insurance, registration status still MISSING — FLAGGED
+- Brand fonts not yet wired (Tailwind `fontFamily.sans/display` still system fallbacks)
+- `bg-brand-ink` buttons render in Primary Ink `#111827` rather than `bg-brand-button` `#000000` — owner-deferred decision whether to migrate button class usages
+
+### Validation
+
+Lint, type-check, and build re-run after these edits land (recorded in implementation log).
+
+### Cross-Repo
+
+Site OS Master untouched (HEAD `36f9092`, clean).
+
+### Commit
+
+Pending.
+
+### Next Step
+
+Two reasonable paths:
+1. **Logo wiring batch** when owner-supplied SVG is available — drop into `public/logo.svg`, replace text wordmark in `Header.tsx` + `Footer.tsx`, add favicon set, optionally add `Organization.logo` to JSON-LD helper.
+2. **Return to STEP 10B** (homepage research → implementation) with the approved palette now rendering in the foundation.
+
+---
+
 ## 2026-05-23 — Brand, Navigation, and Email Decisions Applied
 
 **Workflow phase**: Phase D decision-application batch (between STEP 10A research and STEP 10B homepage implementation)

@@ -4,14 +4,39 @@
 
 @layer base {
   :root {
-    /* TODO-COLOR: brand tokens MISSING — FLAGGED per docs/brand-guide.md.
-       Values below are neutral placeholders until owner palette lands.
-       Format: space-separated RGB channel values (consumed by Tailwind via <alpha-value>). */
-    --brand-primary: 31 41 55;
-    --brand-secondary: 75 85 99;
-    --brand-accent: 17 24 39;
-    --brand-surface: 249 250 251;
-    --brand-ink: 17 24 39;
+    /* APPROVED PLACEHOLDER brand palette per docs/brand-guide.md §0 (2026-05-23).
+       Format: space-separated RGB channel values consumed by Tailwind via
+       rgb(var(--token) / <alpha-value>). Values remain APPROVED PLACEHOLDER
+       until owner ships the final brand package; do not treat as CONFIRMED. */
+
+    /* Text + ink */
+    --brand-ink: 17 24 39;             /* Primary Ink #111827 */
+
+    /* Brand accent (Corporate Haven Deep Teal) */
+    --brand-primary: 11 52 64;          /* Deep Teal #0B3440 — primary brand accent */
+    --brand-primary-hover: 11 52 64;    /* Primary Button Hover #0B3440 */
+
+    /* Legacy alias retained for components that already use it for hover states.
+       Maps to Primary Button Hover (Deep Teal) per palette. */
+    --brand-secondary: 11 52 64;        /* alias of --brand-primary-hover */
+
+    /* Warm + neutral surfaces */
+    --brand-warm: 250 248 243;          /* Warm White #FAF8F3 */
+    --brand-mist: 234 241 241;          /* Mist Background #EAF1F1 */
+    --brand-soft-gray: 245 246 246;     /* Soft Gray #F5F6F6 */
+    --brand-border: 217 222 222;        /* Border Gray #D9DEDE */
+
+    /* Legacy alias retained for components that already use bg-brand-surface.
+       Maps to Warm White per palette. */
+    --brand-surface: 250 248 243;       /* alias of --brand-warm */
+
+    /* Logo + accent extras */
+    --brand-logo-teal: 95 127 131;      /* Logo Teal / Blue-Gray #5F7F83 */
+    --brand-accent: 201 164 106;        /* Warm Accent #C9A46A */
+
+    /* CTA button */
+    --brand-button: 0 0 0;              /* Primary Button #000000 */
+    --brand-button-text: 255 255 255;   /* Button Text #FFFFFF */
   }
 
   html {

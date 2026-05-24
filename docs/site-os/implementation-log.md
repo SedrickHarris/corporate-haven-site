@@ -27,6 +27,53 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-23 — Tailwind Token Batch
+
+- **Phase / Tier**: Phase D — token-wiring batch (between brand-decision update and STEP 10B)
+- **Workflow**: Fast Build Batch under standing approval; targeted token wiring only
+- **Scope**: Brand color tokens only. No content, no navigation, no components, no homepage implementation, no dependencies added.
+- **Approved palette source**: `docs/brand-guide.md §0 Approved Brand and Navigation Direction (2026-05-23)`
+- **Files changed (4)**:
+  - `app/globals.css` — replaced placeholder CSS variables with 13 approved RGB channel triples (11 user-required tokens + 2 legacy aliases for backwards compatibility with existing component class names). Updated comment header from "TODO-COLOR / MISSING — FLAGGED" to "APPROVED PLACEHOLDER per brand-guide.md §0".
+  - `tailwind.config.ts` — extended `theme.colors.brand` to expose all 13 tokens to Tailwind utilities. Hyphenated keys (`primary-hover`, `logo-teal`, `soft-gray`, `button-text`) generate matching class names (`bg-brand-primary-hover`, `text-brand-logo-teal`, etc.). Updated comment header. Font direction comment updated to note APPROVED PLACEHOLDER typography from brand-guide §0 (system fallbacks still in place — fonts are a separate future batch).
+  - `docs/site-os/implementation-log.md` — this entry.
+  - `docs/site-os/changelog/project-changelog.md` — new top entry.
+- **Token mapping** (RGB channel triples in globals.css; classes via tailwind.config.ts):
+  - `--brand-ink` `17 24 39` — Primary Ink `#111827` (text/headings; unchanged value, now labeled APPROVED PLACEHOLDER)
+  - `--brand-primary` `11 52 64` — Deep Teal `#0B3440` (was neutral slate `31 41 55`)
+  - `--brand-primary-hover` `11 52 64` — Primary Button Hover `#0B3440` (NEW)
+  - `--brand-secondary` `11 52 64` — legacy alias → Deep Teal (was neutral gray `75 85 99`)
+  - `--brand-accent` `201 164 106` — Warm Accent `#C9A46A` (was dark `17 24 39`)
+  - `--brand-surface` `250 248 243` — legacy alias → Warm White (was cool gray `249 250 251`)
+  - `--brand-warm` `250 248 243` — Warm White `#FAF8F3` (NEW)
+  - `--brand-mist` `234 241 241` — Mist Background `#EAF1F1` (NEW)
+  - `--brand-soft-gray` `245 246 246` — Soft Gray `#F5F6F6` (NEW)
+  - `--brand-border` `217 222 222` — Border Gray `#D9DEDE` (NEW)
+  - `--brand-logo-teal` `95 127 131` — Logo Teal / Blue-Gray `#5F7F83` (NEW)
+  - `--brand-button` `0 0 0` — Primary Button `#000000` (NEW)
+  - `--brand-button-text` `255 255 255` — Button Text `#FFFFFF` (NEW)
+- **Visible changes from the swap** (no component edits required):
+  - Eyebrow text, bullet dots, focus outlines (anywhere `text-brand-primary` / `outline-brand-primary` / `bg-brand-primary` is used) now render in Deep Teal instead of neutral slate
+  - Button hover states (`hover:bg-brand-secondary` in Header/Hero/Somerset/404 CTAs) now hover to Deep Teal instead of neutral gray
+  - Alternating section backgrounds (`bg-brand-surface`) now render in Warm White instead of cool gray
+  - `text-brand-accent` (currently unused) now resolves to Warm Accent gold rather than near-black if it ships into copy later
+- **Components NOT edited** (per scope rule): `app/page.tsx`, `app/layout.tsx`, `app/not-found.tsx`, all `components/**/*.tsx`. Existing class names automatically pick up new token values via the CSS variable system.
+- **What still needs follow-up**:
+  - Migrate `bg-brand-ink` button usages (Header CTA, Hero primary CTA, Somerset learn-more CTA, etc.) to `bg-brand-button` to use pure `#000000` instead of `#111827` if owner wants strict button-color match — separate component-edit batch.
+  - Wire `bg-brand-warm`, `bg-brand-mist`, `bg-brand-soft-gray`, `border-brand-border` into sections that would benefit — separate component-edit batch.
+  - Font loading (Manrope/Poppins/Montserrat + Source Sans 3/Inter per brand-guide) — separate batch when owner picks final fonts and licenses are confirmed.
+- **No content changed**: zero customer-facing copy edits.
+- **No navigation changed**: `NAV_PRIMARY`, `PRIMARY_CTA`, and all footer nav lists unchanged.
+- **No source page implementation changed**: `app/page.tsx` and `app/layout.tsx` untouched.
+- **No dependencies added**: `package.json` and `package-lock.json` unchanged.
+- **No fake data added**: zero invented business claims. Palette values come directly from `docs/brand-guide.md §0` which carries owner approval.
+- **Validation**: (recorded after the build runs)
+- **Cross-repo**: Site OS Master untouched (HEAD `36f9092`, clean).
+- **Commit hash**: pending.
+- **Next step**: Owner-supplied logo asset wiring (drop SVG into `public/logo.svg`, replace text wordmark in Header + Footer, add favicon set) OR proceed to STEP 10B (homepage research → implementation) with the approved palette now in place.
+
+---
+
 ### 2026-05-23 — Brand, Navigation, and Email Decision Update
 
 - **Phase / Tier**: Phase D — decision-application batch (between STEP 10A and STEP 10B)
