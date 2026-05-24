@@ -4,6 +4,64 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-23 — STEP 5A: Root Site OS Substrate Added
+
+**Workflow phase**: New-client startup — Phase B step 12a preconditions
+
+### Context
+
+The client-side Site OS prompt system setup prompt (`site-os-master/prompts/client-repo-prompt-system-setup-prompt.md` lines 61–73) declares 9 required preconditions and hard-stops if any are missing (line 240). After STEP 4B the client repo had only 3 of the 9: `site-os/README.md`, `site-os/inputs/page-list.md`, and `site-os/changelog/project-changelog.md`. STEP 5A fills the remaining 6 + adds 1 brand-guide and 1 site-build-plan at the `docs/` root, plus this changelog update.
+
+### Policy Docs Copied Verbatim from Site OS Master
+
+Per `docs/client-repo-prompt-system-standard.md §Required Folder Structure`, these policy docs are copied (not referenced) so the client repo is self-sufficient. Source: `site-os-master/docs/`.
+
+- `docs/site-os/fast-build-batch-workflow.md` (11,904 bytes)
+- `docs/site-os/no-fake-data-policy.md` (18,431 bytes)
+- `docs/site-os/file-scope-and-git-safety-policy.md` (10,999 bytes)
+- `docs/site-os/service-business-conversion-layout.md` (18,026 bytes)
+- `docs/site-os/service-card-image-placeholder-standard.md` (19,192 bytes)
+
+This deliberately deviates from `docs/client-repo-doc-structure.md §Source-of-Truth Rule` (which says "do not duplicate Site OS Master prompts, skills, routing, token-control, schemas, page templates, evals, benchmarks, workflow tests, versions, or checklists into the client repo"). Policies are the deliberate carve-out: the standard requires their copy so QA, design, and content prompts can reference local paths.
+
+### Client-Specific Docs Authored
+
+- `docs/site-os/corporate-haven-build-context.md` — single-source-of-truth for client facts (identity, gate status, stack, services, audiences, service area, CTAs, brand voice, Phase 1 page list, Somerset property, 14 approved placeholders, 12 launch blockers, 12 content blockers, no-fake-data reminders, do-not-invent list)
+- `docs/site-os/implementation-log.md` — running build log with entry template + baseline entry covering STEP 4 + STEP 4B + STEP 5A
+- `docs/brand-guide.md` — placeholder document. All visual assets (logo, colors, fonts, photography, icons, design references) marked MISSING — FLAGGED. Brand voice direction APPROVED PLACEHOLDER (professional, welcoming, trustworthy, locally rooted, hospitality + professional housing feel; explicitly not vacation rental, not generic property management, not transient short-stay)
+- `docs/site-build-plan.md` — thin pointer (Option A per owner decision) referencing `docs/site-os/inputs/page-list.md` as canonical Phase 1 page plan; notes no Next.js scaffold exists, architecture pending Prompts 01–05
+
+### Phase B Step 12a Precondition Status (now complete)
+
+| # | Required File | Status |
+|---|---|---|
+| 1 | `docs/brand-guide.md` | ✅ Placeholder document |
+| 2 | `docs/site-build-plan.md` | ✅ Pointer to `page-list.md` |
+| 3 | `docs/site-os/corporate-haven-build-context.md` | ✅ Authored |
+| 4 | `docs/site-os/fast-build-batch-workflow.md` | ✅ Copied verbatim |
+| 5 | `docs/site-os/no-fake-data-policy.md` | ✅ Copied verbatim |
+| 6 | `docs/site-os/file-scope-and-git-safety-policy.md` | ✅ Copied verbatim |
+| 7 | `docs/site-os/service-business-conversion-layout.md` | ✅ Copied verbatim |
+| 8 | `docs/site-os/service-card-image-placeholder-standard.md` | ✅ Copied verbatim |
+| 9 | `docs/site-os/implementation-log.md` | ✅ Authored |
+
+### What's NOT in this STEP 5A (intentional)
+
+- No Next.js scaffold
+- No `app/`, `components/`, `lib/`, `package.json`, `next.config.*`, `tailwind.config.*`
+- No source files
+- No dependencies installed
+- No final website copy
+- No commit yet
+- Site OS Master untouched (verify with `cd "C:\Users\Welcome\Desktop\site-os-master"; git status`)
+- Client-side prompt system not yet installed — that's STEP 5B
+
+### Recommended Next Step
+
+**STEP 5B** — re-attempt the client-side prompt system install per `site-os-master/prompts/client-repo-prompt-system-setup-prompt.md`. Preconditions are now satisfied. The setup prompt will create 10 folders, 14 prompt files, 3 reference docs, 3 checklists, 1 decision doc, and append one entry to `docs/site-os/implementation-log.md`.
+
+---
+
 ## 2026-05-23 — Phase A Intake Complete + Phase B Scaffold Initiated
 
 **Workflow phase**: New-client startup (`site-os-master/docs/new-client-startup-workflow.md` Phase A → Phase B steps 8–11)
