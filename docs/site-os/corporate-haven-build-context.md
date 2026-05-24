@@ -19,9 +19,9 @@ Update this file when an APPROVED PLACEHOLDER transitions to CONFIRMED or when a
 ## 2. Phase A Gate Status
 
 - **Gate decision**: **CLEARED WITH FLAGS** *(approved by project owner 2026-05-23)*
-- **CONFIRMED fields**: 10
+- **CONFIRMED fields**: 11 *(was 10; +1 for email confirmation 2026-05-23 — see §12 launch blocker #2 and §17 below)*
 - **APPROVED PLACEHOLDER fields**: 14
-- **MISSING — FLAGGED fields**: 38
+- **MISSING — FLAGGED fields**: 37 *(was 38; -1 for email)*
 - **Standing approval**: Session-scoped per `docs/site-os/file-scope-and-git-safety-policy.md` and `site-os-master/docs/standing-approval-rule-template.md` — re-invoke per session
 
 ## 3. Stack Decision
@@ -178,7 +178,7 @@ Multi-property language ("our portfolio", "across Cleveland") must wait for owne
 Per `docs/site-os/no-fake-data-policy.md` and `site-os-master/efficiency-governor/client-intake-gate.md § Launch Blocker Reference`:
 
 1. **Primary phone number** — MISSING — FLAGGED. Use `// TODO-PHASE-F-LAUNCH: phone` placeholder. **Do not invent a phone number.**
-2. **Primary email** — MISSING — FLAGGED. Use `// TODO-PHASE-F-LAUNCH: email` placeholder. **Do not invent an email address.**
+2. **Primary email** — ✅ **CONFIRMED 2026-05-23.** Public display: `contact@corporatehaven.net`. Clickable mailto URL: `mailto:contact@inbox.corporatehaven.net`. Wired in `lib/constants/site.ts` as `SITE.email` (display) + `SITE.emailMailto` (href). Resolved — no longer a launch blocker.
 3. **Production domain confirmation** — APPROVED PLACEHOLDER assumes corporatehaven.net replacement
 4. **Address vs. service-area-only decision** — drives LocalBusiness schema
 5. **Business hours** — LocalBusiness schema + GBP alignment
@@ -264,6 +264,80 @@ Site OS Master root: `C:\Users\Welcome\Desktop\site-os-master`
 
 ---
 
-Corporate Haven — Build Context v1.0
-Last updated: 2026-05-23 (STEP 5A)
-Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS)
+## 17. Brand, Navigation, and Email Decisions (2026-05-23)
+
+Owner-approved decisions applied to the build. Source of truth for these decisions is `docs/brand-guide.md §0 Approved Brand and Navigation Direction (2026-05-23)`.
+
+### 17.1 Email — CONFIRMED
+
+- Public display: **`contact@corporatehaven.net`**
+- Clickable `mailto:` URL: **`mailto:contact@inbox.corporatehaven.net`**
+- Why split: the display address routes through the public-facing inbox; the clickable mailto routes through the inbox subdomain
+- Wired in `lib/constants/site.ts` as `SITE.email` (display) + `SITE.emailMailto` (href)
+- Footer renders display text wrapped in `<a href={SITE.emailMailto}>` — pattern documented in `components/layout/Footer.tsx`
+
+### 17.2 Phone — STILL MISSING — FLAGGED
+
+Phone is not confirmed in this update. `SITE.phone` and `SITE.phoneTel` remain `null`. Continue to use `// TODO-PHASE-F-LAUNCH:` placeholders. Do not invent a phone number.
+
+### 17.3 Approved Primary Navigation
+
+- Home
+- Services
+- Properties
+- Cleveland
+- About
+- FAQ
+- Contact
+
+Source of truth: `lib/constants/routes.ts` → `NAV_PRIMARY`.
+
+### 17.4 Primary Header CTA
+
+- **Check Availability** → `/check-availability`
+
+Source: `lib/constants/routes.ts` → `PRIMARY_CTA`.
+
+### 17.5 Removed From Primary Navigation
+
+- Tenant Portal
+- Tenant Requests
+- Leasing Survey
+
+These do not appear in `NAV_PRIMARY` and must not appear in `Header.tsx`.
+
+### 17.6 Footer Rule — Tenant Portal and Tenant Requests
+
+Tenant Portal and Tenant Requests should NOT appear prominently in the public footer. They can create unwanted requests from non-tenants. If needed later, add a small low-priority footer section ("Existing Tenants") only after explicit approval — do NOT add it unilaterally.
+
+### 17.7 Footer Priority Sections
+
+The footer should prioritize:
+
+- Company (About, Contact)
+- Housing (Services hub + 5 services, Properties hub, Cleveland)
+- Get Started (Check Availability, FAQ)
+- Contact (city/state, email visible)
+- Legal (Privacy Policy, Terms — bottom row alongside copyright)
+
+Source: `lib/constants/routes.ts` → `NAV_FOOTER_COMPANY`, `NAV_FOOTER_HOUSING`, `NAV_FOOTER_GET_STARTED`, `NAV_FOOTER_LEGAL`. Footer contact column reads from `SITE` constants directly.
+
+### 17.8 Address, Hours, Testimonials, Pricing, Licenses, Insurance, Brand Assets
+
+All remain MISSING — FLAGGED unless already CONFIRMED elsewhere in this document. No change in this update.
+
+### 17.9 Brand Direction (APPROVED PLACEHOLDER)
+
+Per `docs/brand-guide.md §0`:
+
+- Logo + teal accent: APPROVED direction; wire in when owner-supplied logo asset lands
+- Color palette: APPROVED PLACEHOLDER hex values defined in brand-guide; Tailwind token wiring deferred to a separate batch
+- Typography: APPROVED PLACEHOLDER direction (modern sans-serif headings + readable sans-serif body)
+- Imagery: only verified property photos, Cleveland imagery, professional lifestyle imagery — no AI-generated property photos
+- Motion: subtle Framer Motion only when approved (not in current scaffold)
+
+---
+
+Corporate Haven — Build Context v1.1
+Last updated: 2026-05-23 (Brand/Nav/Email decision update)
+Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23)

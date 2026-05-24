@@ -27,6 +27,35 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-23 — Brand, Navigation, and Email Decision Update
+
+- **Phase / Tier**: Phase D — decision-application batch (between STEP 10A and STEP 10B)
+- **Workflow**: Fast Build Batch under standing approval; targeted updates per owner-approved brand + nav + email decisions
+- **Scope**: docs + nav/contact constants + Footer restructure; Header comment tweak. `app/page.tsx` inspected but not edited (no hardcoded tenant links or wrong email present).
+- **Files changed**:
+  - `docs/brand-guide.md` — added §0 "Approved Brand and Navigation Direction (2026-05-23)" with brand feel, visual direction, APPROVED PLACEHOLDER palette (11 hex tokens), typography direction, image direction, motion direction; version bumped to v0.2
+  - `docs/site-os/corporate-haven-build-context.md` — bumped gate counts (CONFIRMED 10 → 11, MISSING — FLAGGED 38 → 37); marked email RESOLVED in §12 launch blocker #2; appended new §17 "Brand, Navigation, and Email Decisions (2026-05-23)" with 9 sub-sections covering email confirmation, phone still missing, approved nav, primary CTA, removed nav items, footer rule, footer priority sections, MISSING — FLAGGED carry-forward, brand direction; version bumped to v1.1
+  - `lib/constants/site.ts` — added `email: 'contact@corporatehaven.net'` (display) + `emailMailto: 'mailto:contact@inbox.corporatehaven.net'` (href); comment block documents the split-inbox routing
+  - `lib/constants/routes.ts` — added comment block on `NAV_PRIMARY` documenting deliberate exclusion of Tenant Portal / Tenant Requests / Leasing Survey; restructured footer constants (NAV_FOOTER_COMPANY trimmed to About+Contact; added NAV_FOOTER_HOUSING with services hub + 5 services + properties hub + Cleveland; added NAV_FOOTER_GET_STARTED with Check Availability + FAQ; kept NAV_FOOTER_LEGAL; removed NAV_FOOTER_SERVICES); added empty `EXISTING_TENANT_LINKS` constant reserved for future low-priority section
+  - `components/layout/Header.tsx` — minor TODO-BRAND comment tweak to reference the owner's existing Corporate Haven logo
+  - `components/layout/Footer.tsx` — restructured to 5-column priority layout (brand + Company + Housing + Get Started + Contact); contact column renders email as display text with separate mailto href per the split-inbox decision; phone + address render conditionally (still null); Legal stays in bottom row
+  - `docs/site-os/changelog/project-changelog.md` — new top entry recording the decision
+  - `docs/site-os/implementation-log.md` — this entry
+- **Confirmed email**: `contact@corporatehaven.net` (display) — wired in `SITE.email`
+- **Confirmed email URL**: `mailto:contact@inbox.corporatehaven.net` — wired in `SITE.emailMailto`
+- **Approved primary nav**: Home, Services, Properties, Cleveland, About, FAQ, Contact
+- **Primary CTA**: Check Availability → `/check-availability`
+- **Removed from primary nav**: Tenant Portal, Tenant Requests, Leasing Survey
+- **Footer rule**: Tenant Portal and Tenant Requests are NOT prominently placed in the public footer (per §17.6). `EXISTING_TENANT_LINKS` constant added empty for future low-priority section if owner approves.
+- **No source page copy replacement completed**: `app/page.tsx` was inspected, not edited. Homepage copy still placeholder pending STEP 10B.
+- **No fake data added**: zero invented business claims. Phone, address, hours, prices, reviews, ratings, licenses, testimonials, owner names, brand assets all remain MISSING — FLAGGED or unchanged. Brand color palette is APPROVED PLACEHOLDER (provided by owner with specific hex values for use in upcoming Tailwind token batch).
+- **Validation**: (recorded after the build runs)
+- **Cross-repo**: Site OS Master untouched (HEAD `36f9092`, clean).
+- **Commit hash**: pending.
+- **Next step**: When ready, return to STEP 10B (homepage content + build prompt planning) using the approved brand direction. The APPROVED PLACEHOLDER palette and typography direction can be wired into `tailwind.config.ts` + `app/globals.css` in a separate "Tailwind token batch" if owner wants to surface the teal/black/warm-white palette before the homepage copy lands.
+
+---
+
 ### 2026-05-23 — STEP 10A: Homepage Research Artifact
 
 - **Phase / Tier**: Phase D — STEP 10A (Homepage research only, pre-implementation)

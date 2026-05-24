@@ -29,8 +29,12 @@ export const SITE = {
   phone: null as string | null,
   phoneTel: null as string | null,
 
-  // TODO-PHASE-F-LAUNCH: email. MISSING — FLAGGED.
-  email: null as string | null,
+  // CONFIRMED 2026-05-23. Public display email + clickable mailto URL.
+  // The display address routes through the public-facing inbox; the mailto
+  // href routes through the inbox subdomain. See
+  // docs/site-os/corporate-haven-build-context.md §17.1.
+  email: 'contact@corporatehaven.net' as string | null,
+  emailMailto: 'mailto:contact@inbox.corporatehaven.net' as string | null,
 
   // MISSING — FLAGGED. Public-facing vs. service-area-only decision pending.
   // Per docs/site-os/no-fake-data-policy.md §2 do NOT emit until decision lands.

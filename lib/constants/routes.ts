@@ -100,6 +100,10 @@ export type NavItem = {
   href: string;
 };
 
+// Approved Primary Navigation per docs/site-os/corporate-haven-build-context.md §17.3.
+// Tenant Portal, Tenant Requests, and Leasing Survey are deliberately excluded —
+// they would create unwanted requests from non-tenants and dilute the conversion
+// funnel. Do NOT add them to NAV_PRIMARY without owner-approved decision update.
 export const NAV_PRIMARY: readonly NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
@@ -110,22 +114,40 @@ export const NAV_PRIMARY: readonly NavItem[] = [
   { label: 'Contact', href: '/contact' },
 ] as const;
 
-export const NAV_FOOTER_SERVICES = SERVICES.map((s) => ({
-  label: s.name,
-  href: s.href,
-}));
+// Footer nav per docs/site-os/corporate-haven-build-context.md §17.7.
+// Five priority columns: Company, Housing, Get Started, Contact (rendered from
+// SITE constants, not a NAV list), Legal (bottom row). Tenant Portal and
+// Tenant Requests are deliberately omitted from prominent footer placement
+// per §17.6 — they may only appear in a future low-priority "Existing Tenants"
+// section if and when owner explicitly approves.
 
 export const NAV_FOOTER_COMPANY: readonly NavItem[] = [
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
+] as const;
+
+export const NAV_FOOTER_HOUSING: readonly NavItem[] = [
+  { label: 'All Services', href: '/services' },
+  ...SERVICES.map((s): NavItem => ({ label: s.name, href: s.href })),
+  { label: 'All Properties', href: '/properties' },
+  { label: 'Cleveland, OH', href: '/cleveland-ohio' },
+];
+
+export const NAV_FOOTER_GET_STARTED: readonly NavItem[] = [
   { label: 'Check Availability', href: '/check-availability' },
-  { label: 'Properties', href: '/properties' },
   { label: 'FAQ', href: '/faq' },
 ] as const;
 
 export const NAV_FOOTER_LEGAL: readonly NavItem[] = [
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms', href: '/terms' },
+] as const;
+
+// Reserved for future low-priority "Existing Tenants" footer section.
+// Only render after explicit owner approval per §17.6. Currently empty.
+export const EXISTING_TENANT_LINKS: readonly NavItem[] = [
+  // { label: 'Tenant Portal', href: '/tenant-portal' },
+  // { label: 'Tenant Requests', href: '/tenant-requests' },
 ] as const;
 
 export const PRIMARY_CTA = {

@@ -7,7 +7,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <div className="mx-auto flex max-w-container items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
-        {/* TODO-BRAND: replace text wordmark with owner-supplied SVG logo when docs/brand-guide.md §1 lands */}
+        {/* TODO-BRAND: replace text wordmark with the owner's existing Corporate Haven logo
+            (approved direction per docs/brand-guide.md §0). Awaiting owner-supplied SVG asset
+            per docs/brand-guide.md §1. Do not invent a logo. */}
         <Link href="/" className="flex items-center gap-2">
           <span className="font-display text-xl font-bold tracking-tight text-brand-ink">
             {SITE.name}

@@ -4,6 +4,82 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-23 — Brand, Navigation, and Email Decisions Applied
+
+**Workflow phase**: Phase D decision-application batch (between STEP 10A research and STEP 10B homepage implementation)
+
+### Approved Navigation
+
+Primary nav locked at: **Home · Services · Properties · Cleveland · About · FAQ · Contact**.
+Primary CTA: **Check Availability** → `/check-availability`.
+Tenant Portal, Tenant Requests, and Leasing Survey are deliberately excluded from primary navigation and prominent footer placement per owner decision (they would create unwanted requests from non-tenants).
+
+### Email Update — CONFIRMED
+
+Email transitions from **MISSING — FLAGGED** to **CONFIRMED**:
+
+- Public display: **`contact@corporatehaven.net`**
+- Clickable `mailto:` URL: **`mailto:contact@inbox.corporatehaven.net`**
+
+The split-inbox pattern (display address vs. routing address) is wired in `lib/constants/site.ts` as `SITE.email` (display) and `SITE.emailMailto` (href). Footer renders display text wrapped in the mailto href.
+
+### Footer Rule
+
+Footer restructured to 5 priority sections: Company · Housing · Get Started · Contact · Legal. Tenant Portal and Tenant Requests are not prominently placed in the public footer. An empty `EXISTING_TENANT_LINKS` constant is reserved in `lib/constants/routes.ts` for a future low-priority "Existing Tenants" section if owner explicitly approves.
+
+### Brand Direction (APPROVED PLACEHOLDER)
+
+`docs/brand-guide.md` gained a new §0 "Approved Brand and Navigation Direction (2026-05-23)" recording the approved direction:
+
+- Keep current clean modern build structure
+- Bring back existing Corporate Haven logo and teal brand accent
+- Black CTA button style, warm white backgrounds, soft neutral sections
+- 11-token APPROVED PLACEHOLDER color palette (Primary Ink `#111827`, Deep Teal `#0B3440`, Logo Teal `#5F7F83`, Mist `#EAF1F1`, Warm White `#FAF8F3`, Soft Gray `#F5F6F6`, Border Gray `#D9DEDE`, Primary Button `#000000`, Hover `#0B3440`, Button Text `#FFFFFF`, Warm Accent `#C9A46A`)
+- Typography direction: clean modern sans-serif (Manrope / Poppins / Montserrat for headings; Source Sans 3 / Inter for body) — APPROVED PLACEHOLDER, not finalized
+- Imagery rule: verified property + Cleveland photos only; no AI-generated property images
+- Motion: Framer Motion deferred to a future batch with explicit approval
+
+The hex tokens are not yet wired into `tailwind.config.ts` or `app/globals.css` — a separate "Tailwind token batch" can surface them when owner is ready.
+
+### Files Changed (8)
+
+- `docs/brand-guide.md` (new §0 + version bump to v0.2)
+- `docs/site-os/corporate-haven-build-context.md` (gate count update + email CONFIRMED + new §17, version bump to v1.1)
+- `docs/site-os/implementation-log.md` (new entry)
+- `docs/site-os/changelog/project-changelog.md` (this entry)
+- `lib/constants/site.ts` (email + emailMailto added)
+- `lib/constants/routes.ts` (NAV_PRIMARY comment + footer restructure + EXISTING_TENANT_LINKS reserved)
+- `components/layout/Header.tsx` (TODO-BRAND comment tweak)
+- `components/layout/Footer.tsx` (rewrite — 5-column priority layout + split-inbox email rendering)
+
+`app/page.tsx` inspected but not edited (no hardcoded tenant links or wrong email present).
+
+### Confirmed
+
+- ✅ Approved navigation
+- ✅ Email update (split-inbox pattern wired)
+- ✅ Footer rule (tenant links omitted from prominent placement)
+- ✅ No homepage final copy implementation completed (deferred to STEP 10B)
+- ✅ Unresolved items carried forward: phone, address, hours, prices, reviews, ratings, licenses, testimonials, owner names, logo + photography all remain MISSING — FLAGGED
+
+### Validation
+
+Lint, type-check, and build will be re-run after these edits land (see implementation log entry).
+
+### Cross-Repo
+
+Site OS Master untouched (HEAD `36f9092`, clean).
+
+### Commit
+
+Pending.
+
+### Next Step
+
+Return to STEP 10B (homepage content + build prompt planning) using the approved brand direction. Optional intermediate step: a Tailwind token batch to surface the APPROVED PLACEHOLDER palette in `tailwind.config.ts` + `app/globals.css` before homepage copy lands.
+
+---
+
 ## 2026-05-23 — Batch 1: Foundation Scaffold
 
 **Workflow phase**: Phase D (Strategy and Build) — Batch 1 (Foundation Scaffold)
