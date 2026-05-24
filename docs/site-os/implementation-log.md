@@ -27,6 +27,78 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-23 — STEP 10B-Implement: Homepage Implementation
+
+- **Phase / Tier**: Phase D — STEP 10B-Implement (homepage build)
+- **Workflow**: Fast Build Batch under standing approval; executed the build prompt locked at `docs/site-os/outputs/homepage-step10b-build-prompt.md` (commit `cdfc08d`)
+- **Scope** (4 source edits + 2 docs):
+  - `app/page.tsx` — full rewrite: 9 locked-content sections (Hero · Services grid · What Is Mid-Term Housing · What's Included · Who We Serve · Somerset · Cleveland context · FAQ · Final CTA), metadata block (title · description · canonical · robots · OG without image · Twitter card), 3 inline JSON-LD blocks (Organization, LocalBusiness, WebSite) + 1 FAQPage block emitted by `<FAQSection>` from the same FAQS array (zero duplicate schema)
+  - `components/sections/CTASection.tsx` — 1-line change: `bg-brand-ink` → `bg-brand-primary` so the Final CTA renders in Deep Teal `#0B3440` per locked design spec
+  - `lib/constants/seo.ts` — added `buildWebSiteJsonLd()` helper (small addition); other helpers untouched. Organization JSON-LD on homepage is inlined verbatim from locked spec (intentionally NOT using the auto-emit-email helper, because locked Organization spec omits email)
+  - `docs/site-os/implementation-log.md` — this entry
+  - `docs/site-os/changelog/project-changelog.md` — new top entry
+- **Files NOT touched** (per scope rule): `app/layout.tsx`, `app/not-found.tsx`, `app/globals.css`, `next.config.mjs`, `tailwind.config.ts`, `tsconfig.json`, `postcss.config.mjs`, `package.json`, `package-lock.json`, `public/`, `Header.tsx`, `Footer.tsx`, `routes.ts`, `site.ts`, `HeroSection.tsx`, `SectionHeader.tsx`, `FAQSection.tsx`, `ServiceCard.tsx`, `ServiceImagePlaceholder.tsx`, `QuoteFormPlaceholder.tsx`, all docs in `docs/site-os/outputs/` and `docs/brand-guide.md` and `docs/site-os/corporate-haven-build-context.md`. Site OS Master untouched.
+- **Content preservation** (verified by grep on `out/index.html` after build):
+  - H1 verbatim: ✓ "Furnished Mid-Term Rentals and Corporate Housing in Cleveland, Ohio"
+  - Hero sub-headline verbatim: ✓
+  - All 6 trust bullets verbatim: ✓ (including "Cleveland, Ohio — locally operated")
+  - Somerset shared-bath disclosure rendered unaltered: ✓ "The Somerset has a shared bath and entrance. We disclose this clearly so you can make an informed decision before reaching out."
+  - All 10 FAQ Q+A verbatim: ✓ (visible in `<details>` accordion + FAQPage JSON-LD via FAQSection — character-for-character match guaranteed by shared FAQS array)
+  - All 9 amenities verbatim: ✓
+  - All 10 audience descriptors verbatim: ✓
+  - All 13 Somerset detail rows verbatim: ✓
+  - All 3 paragraphs for What Is Mid-Term Housing verbatim: ✓ (with "mid-term rentals in Cleveland" inlined as Link)
+  - All 3 paragraphs for Cleveland context verbatim: ✓ (with "Cleveland, Ohio" and "furnished mid-term rentals" inlined as Links)
+  - All section H2s verbatim: ✓
+  - All CTA labels verbatim: ✓ ("Check Availability", "View Available Rentals", "Contact Corporate Haven", "Learn more about the Somerset", "See all frequently asked questions")
+- **Navigation confirmation** (grep on `out/index.html`):
+  - Primary nav matches approved set: ✓ (Header.tsx unchanged from prior batch)
+  - `Tenant Portal` / `Tenant Requests` / `Leasing Survey` strings ABSENT from rendered HTML: ✓
+- **Email confirmation**:
+  - Visible email `contact@corporatehaven.net` rendered: ✓ (Footer + LocalBusiness JSON-LD)
+  - Email href `mailto:contact@inbox.corporatehaven.net` rendered: ✓ (Footer)
+- **SEO/AEO confirmation**:
+  - Meta title: ✓ "Furnished Corporate Housing in Cleveland, OH | Corporate Haven"
+  - Meta description: ✓ 157 chars verbatim
+  - Canonical: ✓ `https://corporatehaven.net/`
+  - Robots: ✓ `index, follow`
+  - Open Graph title + description set; `og:image` OMITTED (MISSING — FLAGGED): ✓
+  - Twitter card: ✓ `summary_large_image`
+  - Heading hierarchy: ✓ 1 H1 (hero) + 8 H2s (services / what-is / what's-included / who-we-serve / somerset / cleveland / faq / final-CTA) + H3s for the 5 service cards. No skipped levels.
+  - Internal outbound links: ≥10 rendered (mid-term rentals / corporate housing / travel nurse housing / furnished housing for travel nurses / medical professional housing / insurance relocation housing × 2 / The Somerset / Cleveland, Ohio / furnished mid-term rentals / Check Availability × 2 / Contact Corporate Haven / See all frequently asked questions / Learn more about the Somerset)
+- **Schema confirmation** (counted via regex on built HTML):
+  - Exactly 4 `<script type="application/ld+json">` blocks: ✓
+  - Organization: 1 occurrence — emits `name`, `url`, `description` only; omits telephone, email, address, logo, sameAs
+  - LocalBusiness: 1 occurrence — emits `email: "contact@corporatehaven.net"` + `areaServed` 2-entry flat structure (City Cleveland + AdministrativeArea Cuyahoga County, both with addressRegion OH + addressCountry US); omits streetAddress, telephone, openingHours, aggregateRating, logo
+  - WebSite: 1 occurrence — emits `name` + `url` only
+  - FAQPage: 1 occurrence — emitted by FAQSection from the same FAQS array used by visible accordion; character-for-character match guaranteed structurally. Initially had duplicate (FAQSection + page.tsx both emitted); detected via grep `[regex]::Matches($html, '"@type":"FAQPage"').Count == 2` and resolved by removing the duplicate `FAQ_JSON_LD` script tag from page.tsx (FAQSection's internal emission is canonical).
+- **Design confirmation**:
+  - Two-column hero on desktop with form on right: ✓ (HeroSection `layout="split"` + `formSlot={<QuoteFormPlaceholder />}`)
+  - Mobile stacking content → form: ✓ (HeroSection grid: 1-col → 1.05fr/0.75fr at lg+)
+  - Final CTA section in Deep Teal with white text: ✓ (CTASection now uses `bg-brand-primary` per 1-line edit)
+  - Section background rhythm matches plan: ✓
+    - Hero: `bg-brand-surface` (Warm White) via HeroSection
+    - Services grid: `bg-white`
+    - What Is Mid-Term: `bg-brand-mist`
+    - What's Included: `bg-white`
+    - Who We Serve: `bg-brand-mist`
+    - Somerset: `bg-white`
+    - Cleveland: `bg-brand-mist`
+    - FAQ: `bg-white` (via FAQSection)
+    - Final CTA: `bg-brand-primary` (Deep Teal)
+  - Service card grid 1-col / 2-col / 3-col: ✓
+  - All image placeholders `aria-hidden`, no embedded text: ✓ (5× services + 1× Somerset)
+  - Somerset detail grid with shared-bath amber-notice callout: ✓
+  - Primary CTA buttons styled per palette (`bg-brand-button` `#000000` + `hover:bg-brand-primary-hover` `#0B3440` for the new Somerset CTA in app/page.tsx — preserved existing HeroSection/CTASection button styles which use `bg-brand-ink` + `hover:bg-brand-secondary` → that hover now resolves to Deep Teal via the legacy alias from the Tailwind token batch)
+- **Static export**: `out/index.html` regenerated — 115,135 bytes (was 64,908 bytes for the placeholder shell; nearly doubled with locked content + 4 JSON-LD blocks). `out/404.html` still present.
+- **Validation chain**: `npm run type-check` PASS · `npm run lint` PASS (`✔ No ESLint warnings or errors`) · `npm run build` PASS (`Compiled successfully in 1732ms`, 4 static pages generated, `Exporting (2/2)`).
+- **No fake data added**: zero invented business claims. Phone, address, hours, prices, reviews, ratings, licenses, testimonials, owner names, brand logo, property photos all remain MISSING — FLAGGED. Placeholders in place: `<ServiceImagePlaceholder>` for 5 service cards + 1 Somerset image slot; `<QuoteFormPlaceholder>` for hero form (non-submitting); `og:image` omitted; phone/address never rendered.
+- **Cross-repo**: Site OS Master untouched (HEAD `36f9092`, clean tree).
+- **Commit hash**: pending.
+- **Next step**: Optional next moves — (1) Logo wiring batch when owner-supplied SVG arrives · (2) Build Batch 2 (About / Contact / FAQ hub / legal / check-availability / 404) per `docs/site-os/inputs/page-list.md` · (3) Migrate `bg-brand-ink` button usages to `bg-brand-button` in HeroSection/Header for pure `#000000` primary buttons (small polish batch).
+
+---
+
 ### 2026-05-23 — STEP 10B: Homepage Content Package + Build Prompt Artifact
 
 - **Phase / Tier**: Phase D — STEP 10B content lock (between Tailwind token batch and homepage implementation)

@@ -100,6 +100,19 @@ export function buildFaqPageJsonLd(items: readonly FaqItem[]): Record<string, un
 }
 
 /**
+ * Build WebSite JSON-LD. Returns the canonical site identity block emitted on
+ * the homepage per docs/site-os/outputs/homepage-step10b-build-prompt.md Part 19.
+ */
+export function buildWebSiteJsonLd(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.baseUrl,
+  };
+}
+
+/**
  * Build BreadcrumbList JSON-LD. Pass items in document order from root to leaf.
  */
 export type BreadcrumbItem = { name: string; href: string };

@@ -4,6 +4,94 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-23 — STEP 10B-Implement: Homepage Live with Locked Content
+
+**Workflow phase**: Phase D — STEP 10B-Implement (homepage build per locked content package)
+
+### Summary
+
+Replaced the Batch 1 placeholder homepage shell with the full Level 5 Beyond-Elite homepage from `docs/site-os/outputs/homepage-step10b-build-prompt.md`. All 9 sections render the locked content character-for-character (H1, hero sub-headline, 6 trust bullets, 5 service cards, 9 amenities, 10 audience descriptors, 13 Somerset detail rows, all 3-paragraph long-form sections, 10 FAQs, all CTA labels). 4 JSON-LD blocks emit on the page (Organization, LocalBusiness, WebSite, FAQPage). Static export regenerates cleanly.
+
+### Files Changed (5)
+
+- `app/page.tsx` (full rewrite — locked content + metadata + JSON-LD)
+- `components/sections/CTASection.tsx` (1-line change: `bg-brand-ink` → `bg-brand-primary` so the Final CTA renders in Deep Teal `#0B3440`)
+- `lib/constants/seo.ts` (added `buildWebSiteJsonLd()` helper)
+- `docs/site-os/implementation-log.md` (new top entry)
+- `docs/site-os/changelog/project-changelog.md` (this entry)
+
+### Files NOT Touched (per scope)
+
+`app/layout.tsx`, `app/not-found.tsx`, `app/globals.css`, `next.config.mjs`, `tailwind.config.ts`, `tsconfig.json`, `postcss.config.mjs`, `package.json`, `package-lock.json`, `public/`, `Header.tsx`, `Footer.tsx`, `routes.ts`, `site.ts`, `HeroSection.tsx`, `SectionHeader.tsx`, `FAQSection.tsx`, `ServiceCard.tsx`, `ServiceImagePlaceholder.tsx`, `QuoteFormPlaceholder.tsx`. Site OS Master untouched.
+
+### Content Lock Preservation
+
+Verified via grep on built `out/index.html`:
+- H1 exact ✓
+- Hero sub-headline exact ✓
+- 6 trust bullets exact ✓
+- Somerset shared-bath disclosure preserved unaltered ✓
+- All 10 FAQ Q+A exact (visible + JSON-LD) ✓
+- All section H2s exact ✓
+- All CTA labels exact ✓
+- All 10 service card / audience / Somerset detail lists exact ✓
+
+### Navigation + Footer + Email
+
+No changes to nav/footer/email — already correct from prior batches (`d41c3ef` brand decision + `ac42c5f` token wiring). Verified `Tenant Portal` / `Tenant Requests` / `Leasing Survey` strings ABSENT from rendered HTML.
+
+### SEO/AEO/GEO/Schema
+
+- Meta title (62 chars) + meta description (157 chars) exact ✓
+- Canonical `https://corporatehaven.net/` ✓
+- Robots `index, follow` ✓
+- Open Graph (title, description, url, type, siteName, locale) set; `og:image` OMITTED (MISSING — FLAGGED) ✓
+- Twitter card `summary_large_image` ✓
+- Heading hierarchy: 1 H1 + 8 H2 + 5 H3 (service card titles); no skipped levels ✓
+- 4 JSON-LD blocks present, exactly 1 of each type (Org / LB / WebSite / FAQPage) ✓
+- LocalBusiness emits `email: contact@corporatehaven.net` + `areaServed` with Cleveland + Cuyahoga County (flat 2-entry structure per locked spec) ✓
+- All MISSING — FLAGGED schema fields properly omitted (no invented streetAddress, telephone, openingHours, logo, aggregateRating) ✓
+- Internal outbound links: 10+ render and resolve ✓
+
+### Design
+
+- Two-column hero with form on right (mobile stacks content → form) ✓
+- Service card grid 1/2/3-col responsive ✓
+- All image slots use `<ServiceImagePlaceholder>` (5× services + 1× Somerset) ✓
+- Section background rhythm: white / mist / white / mist / white / mist / white / Deep Teal final CTA ✓
+- Final CTA in Deep Teal #0B3440 with white text ✓
+- Somerset "Learn more" CTA uses approved `bg-brand-button` (#000000) + `hover:bg-brand-primary-hover` (#0B3440) ✓
+- Brand palette tokens (from prior Tailwind batch) flowing through naturally ✓
+
+### Validation
+
+- `npm run type-check`: PASS
+- `npm run lint`: PASS (`✔ No ESLint warnings or errors`)
+- `npm run build`: PASS (`Compiled successfully in 1732ms`, 4 static pages, Exporting 2/2)
+- Static export: `out/index.html` regenerated — 115,135 bytes (was 64,908 bytes placeholder)
+
+### No-Fake-Data
+
+Zero invented business claims. All 14 MISSING — FLAGGED items from prior batches remain unchanged (phone, public address, hours, brand logo SVG, OG image, Somerset photography, form endpoint, testimonials, license/insurance/registration, GBP URL, social profiles, final font choice, per-segment messaging, owner/founder name). Brand palette continues as APPROVED PLACEHOLDER.
+
+### Self-Caught Issue Resolved Mid-Batch
+
+Initial implementation had duplicate FAQPage JSON-LD (both `<FAQSection>` and `app/page.tsx` emitted it). Detected via post-build grep count showing 2 FAQPage blocks instead of 1. Resolved by removing the redundant inline `FAQ_JSON_LD` script from `app/page.tsx` — FAQSection's internal emission is canonical and guarantees match with visible accordion via shared FAQS array. Build re-validated clean after fix.
+
+### Cross-Repo
+
+Site OS Master untouched (HEAD `36f9092`, clean tree).
+
+### Commit
+
+Pending — `feat(homepage): implement Phase D STEP 10B homepage — locked content and schema`.
+
+### Next Step
+
+Phase D Batch 2 — core brand pages (`/about`, `/contact`, `/check-availability`, `/faq` hub at Level 5 AEO, `/services` hub, `/properties` hub, `/properties/somerset`, `/cleveland-ohio` at Level 5 location, legal placeholders, thank-you, 404). Or: owner-supplied logo wiring batch when SVG arrives. Or: small polish batch to migrate remaining `bg-brand-ink` button usages to `bg-brand-button` for pure `#000000` primary buttons across Header + HeroSection.
+
+---
+
 ## 2026-05-23 — STEP 10B: Homepage Content Package + Build Prompt Locked
 
 **Workflow phase**: Phase D — content lock (between Tailwind token batch and STEP 10B-Implement)

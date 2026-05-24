@@ -28,7 +28,7 @@ export function CTASection({
   const isSplit = !!formSlot;
 
   return (
-    <section className="bg-brand-ink">
+    <section className="bg-brand-primary">
       <div className="mx-auto max-w-container px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
         <div
           className={cn(
