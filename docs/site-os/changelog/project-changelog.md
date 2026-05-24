@@ -4,6 +4,66 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-23 — STEP 10B: Homepage Content Package + Build Prompt Locked
+
+**Workflow phase**: Phase D — content lock (between Tailwind token batch and STEP 10B-Implement)
+
+### Summary
+
+Claude Project authored the final Corporate Haven homepage content package + complete Claude Code build prompt. Persisted in this Claude Code session as the canonical STEP 10B artifact at `docs/site-os/outputs/homepage-step10b-build-prompt.md`. No source code changed — this is a documentation-only commit that locks the content for the next batch (STEP 10B-Implement).
+
+### What's Locked
+
+- **H1**: Furnished Mid-Term Rentals and Corporate Housing in Cleveland, Ohio
+- **Meta title** (62 chars): Furnished Corporate Housing in Cleveland, OH | Corporate Haven
+- **Meta description** (157 chars): Fully furnished mid-term rentals and corporate housing in Cleveland, OH. Move-in-ready housing for professionals, travel nurses, and relocating guests. Check availability.
+- **9-section page order**: Hero (split) · Services grid (5 cards) · What Is Mid-Term Housing · What's Included · Who We Serve (10 audiences) · The Somerset (with shared-bath disclosure) · Cleveland context · FAQ (10 Q+A) · Final CTA (Deep Teal background)
+- **6 trust bullets**, **10 FAQ questions and answers**, **5 service card descriptions**, **10 audience descriptors**, **13 Somerset property facts**, and **all CTA labels** locked verbatim
+- **4 JSON-LD blocks** specified: Organization (omits telephone/email/address/logo/sameAs) · LocalBusiness (emits `email: contact@corporatehaven.net` + `areaServed` Cleveland + Cuyahoga County, omits streetAddress/telephone/openingHours/aggregateRating/logo) · WebSite · FAQPage (matches visible FAQ character-for-character)
+- **13 internal links** (minimum 10 must render on the homepage)
+
+### Content Preservation Rule (embedded in build prompt)
+
+> All page copy, headings, CTAs, FAQ questions and answers, metadata, schema text, internal anchor text, and business claims are locked. Claude Code may adjust code structure, layout, styling, accessibility, responsive behavior, schema formatting, and approved motion behavior — but may not rewrite, shorten, summarize, paraphrase, simplify, remove, reorder, or replace the approved content.
+
+### Files Changed (3)
+
+- `docs/site-os/outputs/homepage-step10b-build-prompt.md` (NEW — 27-part content package + complete paste-ready build prompt)
+- `docs/site-os/implementation-log.md` (new top entry)
+- `docs/site-os/changelog/project-changelog.md` (this entry)
+
+### Not Changed
+
+- ❌ No `app/page.tsx` changes — homepage shell from Batch 1 still in place
+- ❌ No component changes
+- ❌ No `lib/` changes
+- ❌ No `package.json` / dependency changes
+- ❌ No deploy
+- ❌ No images
+- ❌ Site OS Master untouched (HEAD `36f9092`, clean)
+
+### Carry-Forward (MISSING — FLAGGED, unchanged)
+
+- Phone, public address, business hours, brand logo SVG, Open Graph image, Somerset property photography, form endpoint vendor, verified testimonials, license/insurance/registration status, GBP URL, social profile URLs, final font selection, per-segment messaging, owner/founder name
+
+### Validation
+
+No build run — documentation-only change. Lint/type-check/build to be run by STEP 10B-Implement after `app/page.tsx` is replaced.
+
+### Cross-Repo
+
+Site OS Master untouched (HEAD `36f9092`, clean).
+
+### Commit
+
+Pending.
+
+### Next Step
+
+**STEP 10B-Implement** — paste the build prompt from Part 25 of `docs/site-os/outputs/homepage-step10b-build-prompt.md` into a Claude Code session opened in the client repo. Execute Gate 1 → Gate 2 → Gate 3 under standing approval. Validate `npm run type-check` + `npm run lint` + `npm run build`; confirm `out/index.html` regenerates. Then stage explicit files + commit `feat(homepage): implement Phase D STEP 10B homepage — locked content and schema` + push to `origin main`.
+
+---
+
 ## 2026-05-23 — Tailwind Token Batch: Corporate Haven Brand Palette Wired
 
 **Workflow phase**: Phase D token-wiring batch (between brand-decision update and STEP 10B homepage implementation)

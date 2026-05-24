@@ -27,6 +27,24 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-23 — STEP 10B: Homepage Content Package + Build Prompt Artifact
+
+- **Phase / Tier**: Phase D — STEP 10B content lock (between Tailwind token batch and homepage implementation)
+- **Workflow**: Claude Project authored the final homepage content package + complete Claude Code build prompt. This Claude Code session persisted the artifact at the standard outputs/ path; no source code changed.
+- **Scope**: Documentation only. `app/page.tsx`, components, lib, configs, dependencies — none changed.
+- **Output**: `docs/site-os/outputs/homepage-step10b-build-prompt.md`
+- **Artifact contents (27 parts)**: strategy summary · keyword research summary · keyword mapping · SEO/AEO/GEO direction · final H1 · meta title · meta description · OG title + description · section order · hero copy · CTA hierarchy · service cards (5) · "What Is Mid-Term Housing?" copy · "What's Included" copy · "Who We Serve" copy · Somerset copy · Cleveland context copy · FAQ (10 locked Q+A) · schema plan (Organization · LocalBusiness · WebSite · FAQPage) · internal link plan (13 anchors) · image + alt text plan · front-end design notes · Framer Motion deferral notes · missing-data TODO list · complete copy-paste-ready Claude Code build prompt.
+- **Content lock applied**: H1, hero sub-headline, 6 trust bullets, Somerset shared-bath disclosure, all 10 FAQ questions and answers, all CTA labels, all section H2s, all internal anchor text, meta title + description, all schema text are LOCKED. STEP 10B-Implement (next batch) may only adjust code structure / layout / accessibility / styling, never the approved content.
+- **No source code changed in this artifact**: only `docs/site-os/outputs/homepage-step10b-build-prompt.md` (new) + `docs/site-os/implementation-log.md` (this entry) + `docs/site-os/changelog/project-changelog.md` (new top entry).
+- **No fake data**: every fact in the content package is CONFIRMED or APPROVED PLACEHOLDER. Phone, address, hours, prices, reviews, ratings, licenses, testimonials, owner names, brand logo, property photos all remain MISSING — FLAGGED and are referenced as TODO in the build prompt.
+- **No final implementation done**: homepage `app/page.tsx` still shows the Batch 1 placeholder shell. The build prompt in Part 25 of the artifact is the contract for the next batch (STEP 10B-Implement).
+- **Carry-forward**: all 14 launch / content blockers from `corporate-haven-build-context.md` continue to apply.
+- **Cross-repo**: Site OS Master untouched (HEAD `36f9092`, clean).
+- **Commit hash**: pending.
+- **Next step**: **STEP 10B-Implement** — paste the build prompt from Part 25 of the artifact into a Claude Code session, run Gate 1 → Gate 2 → Gate 3, validate (type-check + lint + build), then stage + commit + push (`feat(homepage): implement Phase D STEP 10B homepage — locked content and schema`).
+
+---
+
 ### 2026-05-23 — Tailwind Token Batch
 
 - **Phase / Tier**: Phase D — token-wiring batch (between brand-decision update and STEP 10B)
