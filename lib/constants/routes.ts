@@ -14,41 +14,44 @@ export type Service = {
   audienceCritical?: boolean;
 };
 
+// Service slugs use the final Cleveland-specific SEO pattern
+// `/services/{service-name}-cleveland` per docs/site-os/corporate-haven-build-context.md §18
+// (Final SEO Slug Strategy, 2026-05-24). Do not revert to short slugs as final page targets.
 export const SERVICES: readonly Service[] = [
   {
-    slug: 'mid-term-rentals',
+    slug: 'mid-term-rentals-cleveland',
     name: 'Mid-Term Rentals',
-    href: '/services/mid-term-rentals',
+    href: '/services/mid-term-rentals-cleveland',
     shortDescription:
       'Fully furnished, all-inclusive housing for stays between a hotel and an annual lease.',
   },
   {
-    slug: 'corporate-housing',
+    slug: 'corporate-housing-cleveland',
     name: 'Corporate Housing',
-    href: '/services/corporate-housing',
+    href: '/services/corporate-housing-cleveland',
     shortDescription:
       'Move-in-ready housing for corporate assignments, relocations, and project teams.',
   },
   {
-    slug: 'travel-nurse-housing',
+    slug: 'travel-nurse-housing-cleveland',
     name: 'Travel Nurse Housing',
-    href: '/services/travel-nurse-housing',
+    href: '/services/travel-nurse-housing-cleveland',
     shortDescription:
       'Flexible housing close to Cleveland major hospital systems for travel nurses on assignment.',
     audienceCritical: true,
   },
   {
-    slug: 'medical-professional-housing',
+    slug: 'medical-professional-housing-cleveland',
     name: 'Medical Professional Housing',
-    href: '/services/medical-professional-housing',
+    href: '/services/medical-professional-housing-cleveland',
     shortDescription:
       'Professional-grade housing for resident physicians, healthcare support staff, and medical professionals.',
     audienceCritical: true,
   },
   {
-    slug: 'insurance-relocation-housing',
+    slug: 'insurance-relocation-housing-cleveland',
     name: 'Insurance Relocation Housing',
-    href: '/services/insurance-relocation-housing',
+    href: '/services/insurance-relocation-housing-cleveland',
     shortDescription:
       'Move-in-ready housing for displaced guests and insurance-paid relocations.',
     audienceCritical: true,

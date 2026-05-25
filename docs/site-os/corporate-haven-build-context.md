@@ -338,6 +338,99 @@ Per `docs/brand-guide.md §0`:
 
 ---
 
-Corporate Haven — Build Context v1.1
-Last updated: 2026-05-23 (Brand/Nav/Email decision update)
-Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23)
+## 18. Final SEO Slug Strategy (2026-05-24)
+
+Owner-approved final URL slug strategy for Corporate Haven. All future pages, sitemap entries, internal links, schema URLs, and build prompts must use these slugs from the start. This section supersedes any short-slug references in earlier research artifacts (`docs/site-os/outputs/homepage-research.md`, `docs/site-os/outputs/homepage-step10b-build-prompt.md`) for any page that has not yet been built. Locked homepage copy stays as-is; inline homepage link updates are deferred to the next homepage or architecture implementation batch.
+
+### 18.1 Core Pages
+
+- `/`
+- `/about/`
+- `/faq/`
+- `/contact/`
+- `/check-availability/`
+- `/privacy-policy/`
+- `/terms/`
+
+### 18.2 Hub Pages
+
+- `/services/`
+- `/properties/`
+- `/compare/`
+- `/locations/`
+- `/housing-near-hospitals/`
+
+### 18.3 Service Pages (Cleveland-Specific Final Slugs)
+
+- `/services/mid-term-rentals-cleveland/`
+- `/services/corporate-housing-cleveland/`
+- `/services/travel-nurse-housing-cleveland/`
+- `/services/medical-professional-housing-cleveland/`
+- `/services/medical-student-housing-cleveland/`
+- `/services/insurance-relocation-housing-cleveland/`
+- `/services/temporary-family-housing-cleveland/`
+
+### 18.4 Property Pages
+
+- `/properties/somerset/`
+
+### 18.5 Hospital Pages
+
+- `/housing-near-cleveland-clinic/`
+- `/housing-near-university-hospitals-cleveland/`
+- `/housing-near-metrohealth-cleveland/`
+- `/housing-near-va-medical-center-cleveland/`
+- `/housing-near-case-western-reserve/`
+
+### 18.6 Comparison Pages
+
+- `/compare/corporate-housing-vs-hotels/`
+- `/compare/corporate-housing-vs-airbnb/`
+- `/compare/mid-term-rentals-vs-apartments/`
+- `/compare/travel-nurse-housing-vs-hotels/`
+- `/compare/insurance-housing-vs-hotels/`
+
+### 18.7 Location Pages
+
+- `/cleveland-ohio/`
+- `/locations/mid-term-rentals-cleveland/`
+- `/locations/mid-term-rentals-university-circle/`
+- `/locations/mid-term-rentals-lakewood/`
+- `/locations/mid-term-rentals-cleveland-heights/`
+- `/locations/mid-term-rentals-shaker-heights/`
+
+### 18.8 Slug Rules
+
+1. Service pages must use `/services/{service-name}-cleveland/`.
+2. Comparison pages must use `/compare/{option-a}-vs-{option-b}/`.
+3. Hospital pages must use `/housing-near-{hospital-name}/`.
+4. Location pages must use `/locations/mid-term-rentals-{location}/`.
+5. Property pages must use `/properties/{property-name}/`.
+6. Keep `/cleveland-ohio/` as the main Cleveland service-area page.
+7. Use `/locations/mid-term-rentals-cleveland/` as the keyword-focused Cleveland location page (complements `/cleveland-ohio/` rather than replacing it).
+8. Do not create short service slugs such as `/services/travel-nurse-housing/` as final pages.
+9. Do not create root service pages such as `/travel-nurse-housing-cleveland/` as final pages.
+10. Redirects should only be used later if a conflicting page already exists or an old published URL must be preserved.
+
+### 18.9 Redirect Policy
+
+Redirects are not the primary strategy for future page creation. Final SEO slugs should be used from the start. Redirects should only be added later when an old, published, indexed, or conflicting URL must be preserved.
+
+### 18.10 Homepage and Internal Link Update Decision
+
+Homepage and future internal links should be updated to point to the final Cleveland-specific service slugs instead of short service slugs.
+
+Examples:
+
+- `/services/travel-nurse-housing-cleveland/` instead of `/services/travel-nurse-housing/`
+- `/services/corporate-housing-cleveland/` instead of `/services/corporate-housing/`
+- `/services/insurance-relocation-housing-cleveland/` instead of `/services/insurance-relocation-housing/`
+- `/services/mid-term-rentals-cleveland/` instead of `/services/mid-term-rentals/`
+
+`lib/constants/routes.ts` `SERVICES` array is updated in the same batch as this section so that dynamic consumers (e.g. `ServiceCard` grids, future hub pages, future sitemap generators) emit the final slugs automatically. Hardcoded inline `<Link href="/services/...">` references inside `app/page.tsx` remain on the short slugs in this step and will be migrated in the next homepage or architecture implementation batch — they currently resolve to non-existent pages either way because the service pages have not been built.
+
+---
+
+Corporate Haven — Build Context v1.2
+Last updated: 2026-05-24 (Final SEO Slug Strategy added — §18)
+Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23) + Final SEO Slug Strategy decision (2026-05-24)

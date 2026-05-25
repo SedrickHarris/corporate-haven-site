@@ -27,6 +27,35 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-24 — Final SEO Slug Strategy Decision
+
+- **Phase / Tier**: Phase D — documentation and route planning decision batch (between STEP 10B-Implement homepage and Batch 2 page work)
+- **Workflow**: Fast Build Batch under standing approval; documentation-and-route-constants-only update per owner-approved final URL slug strategy
+- **Step**: Final SEO Slug Strategy Decision
+- **Scope**: documentation and route planning only
+- **Files changed (4 max)**:
+  - `docs/site-os/corporate-haven-build-context.md` — appended new §18 "Final SEO Slug Strategy (2026-05-24)" with 10 sub-sections (Core / Hub / Service / Property / Hospital / Comparison / Location pages + Slug rules + Redirect policy + Homepage internal-link decision); version bumped to v1.2
+  - `lib/constants/routes.ts` — `SERVICES` array slug + href fields migrated from short slugs to Cleveland-specific final slugs (5 entries: `mid-term-rentals` → `mid-term-rentals-cleveland`, `corporate-housing` → `corporate-housing-cleveland`, `travel-nurse-housing` → `travel-nurse-housing-cleveland`, `medical-professional-housing` → `medical-professional-housing-cleveland`, `insurance-relocation-housing` → `insurance-relocation-housing-cleveland`)
+  - `docs/site-os/implementation-log.md` — this entry
+  - `docs/site-os/changelog/project-changelog.md` — new top entry
+- **Files NOT touched** (per scope rule): `app/page.tsx`, all `components/**/*.tsx`, `lib/constants/site.ts`, `lib/constants/seo.ts`, `app/globals.css`, `tailwind.config.ts`, `package.json`, `package-lock.json`, `next.config.mjs`, `public/`, all `.claude/` configuration, `node_modules/`, `.next/`, `out/`, Site OS Master.
+- **Notes**:
+  - Cleveland-specific service slugs approved
+  - Hub folder strategy approved (`/services/`, `/properties/`, `/compare/`, `/locations/`, `/housing-near-hospitals/`)
+  - Hospital root landing pages approved (no `/locations/` prefix — root-level `/housing-near-{hospital}/`)
+  - Comparison pages under `/compare/` approved
+  - Location cluster under `/locations/` approved (with `/cleveland-ohio/` retained as the main Cleveland service-area page and `/locations/mid-term-rentals-cleveland/` as the keyword-focused complement)
+  - Redirects deferred unless needed for old or conflicting URLs
+  - No page implementation completed in this step
+  - No source page copy changed
+- **Consequence of routes.ts edit**: dynamic consumers of the `SERVICES` array (`ServiceCard` grid in `app/page.tsx`, future hub pages, future sitemap generators) will emit the new Cleveland-specific slugs automatically. The 3 hardcoded inline `<Link href="/services/...">` references in `app/page.tsx` body copy (Section 3 "mid-term rentals in Cleveland", Section 5 "furnished housing for travel nurses", Section 5 "insurance relocation housing", Section 7 "furnished mid-term rentals") remain on the short slugs and will be migrated in the next homepage or architecture implementation batch — they currently resolve to non-existent pages either way (service pages have not been built).
+- **No fake data added**: zero invented business claims. All MISSING — FLAGGED items remain unchanged.
+- **Cross-repo**: Site OS Master untouched (verified before commit).
+- **Commit hash**: pending.
+- **Next step**: Batch 2 page work using the final slugs from `corporate-haven-build-context.md §18` — recommended starting points: `/about/`, `/contact/`, `/check-availability/`, `/faq/` hub at Level 5 AEO, `/services/` hub, `/properties/` hub, `/properties/somerset/`, `/cleveland-ohio/` at Level 5 location. Alternatively, a small follow-up batch to migrate the 4 hardcoded inline `<Link>` calls inside `app/page.tsx` body copy to the new Cleveland-specific slugs.
+
+---
+
 ### 2026-05-23 — STEP 10B-Implement: Homepage Implementation
 
 - **Phase / Tier**: Phase D — STEP 10B-Implement (homepage build)

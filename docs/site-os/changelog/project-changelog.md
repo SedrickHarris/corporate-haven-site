@@ -4,6 +4,76 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-24 — Final SEO Slug Strategy Approved and Documented
+
+**Workflow phase**: Phase D — documentation and route planning decision batch (between STEP 10B-Implement homepage and Batch 2 page work)
+
+### Summary
+
+Final SEO slug strategy approved and documented. Documentation update + route constants migration only — no new pages built in this step. Future pages, sitemap entries, internal links, and build prompts will use the final Cleveland-specific slugs from the start. Redirects are no longer the primary strategy for future page creation.
+
+### Final Service Slug Pattern
+
+`/services/{service-name}-cleveland/` — e.g. `/services/mid-term-rentals-cleveland/`, `/services/corporate-housing-cleveland/`, `/services/travel-nurse-housing-cleveland/`, `/services/medical-professional-housing-cleveland/`, `/services/medical-student-housing-cleveland/`, `/services/insurance-relocation-housing-cleveland/`, `/services/temporary-family-housing-cleveland/`.
+
+### Final Comparison Slug Pattern
+
+`/compare/{option-a}-vs-{option-b}/` under a `/compare/` hub — e.g. `/compare/corporate-housing-vs-hotels/`, `/compare/corporate-housing-vs-airbnb/`, `/compare/mid-term-rentals-vs-apartments/`, `/compare/travel-nurse-housing-vs-hotels/`, `/compare/insurance-housing-vs-hotels/`.
+
+### Final Hospital Slug Pattern
+
+`/housing-near-{hospital-name}/` at the site root (no `/locations/` prefix) — e.g. `/housing-near-cleveland-clinic/`, `/housing-near-university-hospitals-cleveland/`, `/housing-near-metrohealth-cleveland/`, `/housing-near-va-medical-center-cleveland/`, `/housing-near-case-western-reserve/`.
+
+### Final Location Slug Pattern
+
+`/locations/mid-term-rentals-{location}/` under a `/locations/` hub. `/cleveland-ohio/` is retained as the main Cleveland service-area page; `/locations/mid-term-rentals-cleveland/` is the keyword-focused complement. Additional location pages: `/locations/mid-term-rentals-university-circle/`, `/locations/mid-term-rentals-lakewood/`, `/locations/mid-term-rentals-cleveland-heights/`, `/locations/mid-term-rentals-shaker-heights/`.
+
+### Final Property Slug Pattern
+
+`/properties/{property-name}/` — currently `/properties/somerset/`. Property hub at `/properties/`.
+
+### Redirect Policy Update
+
+Redirects are NOT the primary strategy for future page creation. Final SEO slugs are used from the start. Redirects will only be added later when an old, published, indexed, or conflicting URL must be preserved.
+
+### No Pages Built in This Step
+
+- ❌ No new pages created
+- ❌ No homepage final copy changed
+- ❌ No `app/page.tsx` edits
+- ❌ No component changes
+- ❌ No navigation changes (Home · Services · Properties · Cleveland · About · FAQ · Contact + Check Availability CTA stays locked)
+- ❌ No email changes
+- ❌ No schema changes
+- ❌ No redirects added in this step
+- ❌ No Site OS Master changes
+- ❌ No `lib/constants/site.ts`, `lib/constants/seo.ts`, `app/globals.css`, `tailwind.config.ts`, `package.json`, `public/` changes
+
+### Files Changed (4)
+
+- `docs/site-os/corporate-haven-build-context.md` (new §18 + version bump to v1.2)
+- `lib/constants/routes.ts` (`SERVICES` array: 5 entries migrated from short slugs to Cleveland-specific final slugs — both `slug` and `href` fields updated)
+- `docs/site-os/implementation-log.md` (new top entry)
+- `docs/site-os/changelog/project-changelog.md` (this entry)
+
+### Carry-Forward Consequence
+
+The `SERVICES` href update means the homepage `ServiceCard` grid (which iterates `SERVICES.map((s) => ...)`) automatically renders the new Cleveland-specific slugs. The 4 hardcoded inline `<Link href="/services/...">` references inside `app/page.tsx` body copy (sections 3, 5, 7) remain on the short slugs and will be migrated in the next homepage or architecture implementation batch. Both old and new slugs currently resolve to non-existent pages (service pages have not been built), so no live link breakage is introduced.
+
+### Cross-Repo
+
+Site OS Master untouched.
+
+### Commit
+
+Pending — `docs(strategy): lock Corporate Haven SEO slug strategy`.
+
+### Next Step
+
+Batch 2 page work using the final slugs from `corporate-haven-build-context.md §18`. Recommended order: `/about/`, `/contact/`, `/check-availability/`, `/faq/` hub at Level 5 AEO, `/services/` hub, `/properties/` hub, `/properties/somerset/`, `/cleveland-ohio/` at Level 5 location, then the seven Cleveland-specific service pages. Optional small follow-up batch: migrate the 4 hardcoded inline `<Link>` calls inside `app/page.tsx` body copy to the new Cleveland-specific slugs.
+
+---
+
 ## 2026-05-23 — STEP 10B-Implement: Homepage Live with Locked Content
 
 **Workflow phase**: Phase D — STEP 10B-Implement (homepage build per locked content package)
