@@ -462,7 +462,7 @@ The build list does not write code, generate copy, or author schema. It points t
 
 ## 20. Analytics and Measurement Planning (2026-05-24)
 
-- **Analytics planning docs created**: `docs/site-os/analytics-measurement-plan.md` (strategy, goals, 5 event groups, page-type rules, privacy notes, UTM strategy, implementation hold) and `docs/site-os/gtm-ga4-event-taxonomy.md` (event naming rules, 28-event master taxonomy table, homepage event specs, 6 hub card triples, dataLayer payload examples, GA4 conversion list, GTM + DebugView checklists). Both files are the contract for Phase 12 (`docs/site-os/corporate-haven-build-list.md §F Phase 12`).
+- **Analytics planning docs created**: `docs/site-os/analytics-measurement-plan.md` (strategy, goals, 5 event groups, page-type rules, privacy notes, UTM strategy, implementation hold) and `docs/site-os/gtm-ga4-event-taxonomy.md` (event naming rules, 28-event master taxonomy table, homepage event specs, 6 hub card triples, dataLayer payload examples, GA4 conversion list, GTM + DebugView checklists). Both files are the contract for Phase 12 (`docs/site-os/corporate-haven-build-list.md §F Phase 13`).
 - **GTM and GA4 are planned but not yet implemented**. No GTM bootstrap script in `app/layout.tsx`. No GA4 inline tag. No analytics dependencies in `package.json`. No `lib/analytics/` directory. No `.env` files with analytics IDs. The plan is the precondition; implementation lands only after the hold lifts.
 - **GTM ID is MISSING — FLAGGED**. Owner provides the GTM container ID. When available, it is consumed via `NEXT_PUBLIC_GTM_ID` build-time environment variable — never hardcoded in source.
 - **GA4 Measurement ID is MISSING — FLAGGED**. GA4 is configured through GTM unless the owner explicitly approves a direct GA4 install.
@@ -473,6 +473,21 @@ The 14 launch blockers and 12 content blockers in §12–§13 of this document c
 
 ---
 
-Corporate Haven — Build Context v1.4
-Last updated: 2026-05-24 (Analytics and Measurement Planning added — §20)
-Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23) + Final SEO Slug Strategy decision (2026-05-24) + Expanded Build List and Launch-to-Scale Roadmap decision (2026-05-24) + Analytics and Measurement Planning decision (2026-05-24)
+## 21. Contract Worker Housing Page Added to Build Plan (2026-05-24)
+
+A dedicated supporting service SEO page for Contract Worker Housing Cleveland is now part of the build plan. Documentation and planning only. No page built in this batch. No homepage code changed. No navigation changed. No email changed. No schema helpers changed. No redirects added. No fake data added.
+
+- **URL**: `/services/contract-worker-housing-cleveland/`
+- **Parent hub**: `/services/corporate-housing-cleveland/`
+- **Build phase**: Phase 4, Core Service Expansion (see `docs/site-os/corporate-haven-build-list.md §F Phase 4`). Phase 4 is a new phase inserted into the launch-to-scale plan. Existing Phases 4 through 12 were renumbered to 5 through 13 to make room.
+- **Homepage audience grid link**: Contract workers row links to `/services/contract-worker-housing-cleveland/` per `docs/site-os/corporate-haven-build-list.md §Q.6`. Implementation of the per-audience link wrappers in the homepage Section 5 grid is a future homepage refinement batch.
+- **Cluster placement**: Contract Worker Housing sits in the Corporate Housing cluster (`docs/site-os/corporate-haven-build-list.md §Q.3`). It is not a homepage hub card itself.
+- **No-fake-data cautions**: Do not claim employer partnerships, crew discounts, union affiliation, specific jobsite proximity, guaranteed availability, negotiated workforce rates, or bulk housing options unless verified. See `docs/site-os/no-fake-data-policy.md` for the broader prohibition list.
+
+For full cluster structure, audience grid mapping, and the Contract Worker Housing page plan, see `docs/site-os/corporate-haven-build-list.md §Q`. For the analytics planning note on the future `audience_grid_click` event, see `docs/site-os/corporate-haven-build-list.md §Q.9`.
+
+---
+
+Corporate Haven Build Context v1.5
+Last updated: 2026-05-24 (Contract Worker Housing Page added to build plan, §21)
+Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23) + Final SEO Slug Strategy decision (2026-05-24) + Expanded Build List and Launch-to-Scale Roadmap decision (2026-05-24) + Analytics and Measurement Planning decision (2026-05-24) + Contract Worker Housing Build List Update (2026-05-24)

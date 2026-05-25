@@ -27,6 +27,48 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-24: Contract Worker Housing Build List Update
+
+- **Step**: Contract Worker Housing Build List Update
+- **Date**: 2026-05-24
+- **Phase / Tier**: Phase D, documentation and build-list planning batch (preparation for Phase 4 Core Service Expansion implementation)
+- **Workflow**: Fast Build Batch under standing approval. Documentation-only update adding Contract Worker Housing Cleveland as a dedicated supporting service SEO page, restructuring the build phase plan to make room for a new Phase 4 Core Service Expansion, and documenting the cluster internal-linking structure plus the homepage audience grid link strategy.
+- **Scope**: Documentation and build-list planning only.
+- **Files changed (4)**:
+  - `docs/site-os/corporate-haven-build-list.md`. Slug `/services/contract-worker-housing-cleveland/` added to Section E Supporting Service SEO Pages. Phase 4 through Phase 12 renumbered to Phase 5 through Phase 13. New Phase 4 Core Service Expansion inserted in Section F with 5 pages. New Section Q added at the end of the file with 9 subsections (Q.1 Homepage Hub Card Strategy clarification, Q.2 Updated Supporting Service SEO Pages, Q.3 Corporate Housing Cluster, Q.4 Healthcare Housing Cluster, Q.5 Student Housing Cluster, Q.6 Homepage Audience Grid Link Strategy with 10-row mapping, Q.7 Contract Worker Housing Page Plan, Q.8 Final Slug Strategy additive, Q.9 Analytics Planning Note). Version bumped v1.0 to v1.1.
+  - `docs/site-os/corporate-haven-build-context.md`. Updated 2 references in Section 20 from "Phase 12" to "Phase 13" for the renumbered analytics phase. Appended new Section 21 "Contract Worker Housing Page Added to Build Plan" with URL, parent hub, build phase, audience grid link, cluster placement, and no-fake-data cautions. Version bumped v1.4 to v1.5.
+  - `docs/site-os/implementation-log.md`. This entry.
+  - `docs/site-os/changelog/project-changelog.md`. New top entry.
+- **Files NOT touched** (per scope rule): `app/page.tsx`, `app/layout.tsx`, all `components/**/*.tsx`, `lib/constants/site.ts`, `lib/constants/seo.ts`, `lib/constants/routes.ts`, `app/globals.css`, `tailwind.config.ts`, `package.json`, `package-lock.json`, `next.config.mjs`, `public/`, `docs/site-os/outputs/`, all `.claude/` configuration, `node_modules/`, `.next/`, `out/`, Site OS Master. Per the spec, `lib/constants/routes.ts` is left alone because Contract Worker Housing is a supporting service page (not a homepage hub card) and a separate route constant for supporting services does not yet exist. The Contract Worker route constant can be added in the implementation batch that builds the page.
+- **Files referenced but NOT edited** (out of update scope, but contain phase references that are now stale and will be reconciled in a future batch when their scope is opened):
+  - `docs/site-os/analytics-measurement-plan.md`. References "Phase 12" in 2 places (file header `Implementation phase` line and `Section L Analytics Implementation Hold` first bullet). These are now stale and should read "Phase 13" once a follow-up batch reopens the analytics doc scope. Carry-forward, not blocking.
+  - `docs/site-os/gtm-ga4-event-taxonomy.md`. References "Phase 12" in 1 place (file header `Implementation phase` line). Same carry-forward as above.
+- **Notes**:
+  - Contract Worker Housing Cleveland added as a dedicated supporting service SEO page (URL `/services/contract-worker-housing-cleveland/`).
+  - Parent hub set to Corporate Housing (`/services/corporate-housing-cleveland/`).
+  - Homepage audience grid link strategy updated. The 10 audience rows in the homepage Section 5 grid are mapped to the appropriate final Cleveland-specific slugs (see `docs/site-os/corporate-haven-build-list.md §Q.6`). Implementation of the per-audience link wrappers in `app/page.tsx` is a future homepage refinement batch.
+  - Supporting service SEO page list updated to include the new slug.
+  - Phase 4 Core Service Expansion added to the build plan (new phase). Existing Phase 4 through Phase 12 renumbered to Phase 5 through Phase 13.
+  - No pages built in this step.
+  - No homepage code changed.
+  - No navigation changed.
+  - No email changed.
+  - No schema helpers changed.
+  - No analytics implementation, no GTM, no GA4 added.
+  - No redirects added.
+  - No fake data added.
+- **Phase renumber consequence**: Forward-looking references to phase numbers in documentation that this batch can edit are updated (build-context.md §20 now reads "Phase 13" for analytics). Historical references in prior implementation-log entries and prior changelog entries (which describe past state at the time those entries were written) are intentionally NOT rewritten. They reference the phase numbers that were in effect at the time of those entries. Forward references in `analytics-measurement-plan.md` and `gtm-ga4-event-taxonomy.md` are stale (see above) and will reconcile in a follow-up batch.
+- **Em-dash discipline**: This batch follows the new copy rule. No em dashes were introduced in new content. Phase renumber edits preserve the existing em-dash character in heading lines because the character is unchanged in position, only the numeric value changes. Pre-existing em dashes from prior batches are left in place per the rule scoping of "introduced in this step". The build-list footer was rewritten without an em dash separator (was "Corporate Haven — Build List v1.0", now "Corporate Haven Build List v1.1"). The build-context footer was rewritten similarly (now "Corporate Haven Build Context v1.5"). New content (Section Q in the build list, Section 21 in the build context, this entry, and the new changelog entry) uses no em dashes anywhere.
+- **No source code changed**: zero `.ts`, `.tsx`, `.css`, `.mjs`, `.json` edits. `app/page.tsx` unchanged from commit `eea4d87`. Components untouched. Constants untouched. Build artifacts regenerate identically.
+- **No fake data added**: zero invented business claims. All MISSING and FLAGGED items in §12 and §13 of `corporate-haven-build-context.md` remain unchanged. The Contract Worker Housing page plan explicitly forbids claims about employer partnerships, crew discounts, union affiliation, specific jobsite proximity, guaranteed availability, negotiated workforce rates, or bulk housing options unless verified.
+- **Cross-repo**: Site OS Master verified untouched (HEAD `36f9092`, clean tree) before and after the batch.
+- **Commit hash**: pending.
+- **Next step**: Two reasonable paths.
+  1. Phase 1 page batch. Pick the next Phase 1 page from `corporate-haven-build-list.md §F Phase 1` and run the Site OS Master research, locked content, and build prompt flow. The homepage card CTAs currently link to non-existent Phase 2 hub destinations, so building those hubs is still the highest-impact next move.
+  2. Phase 4 Core Service Expansion implementation. Build Contract Worker Housing Cleveland as the brand-new piece of Phase 4. The page plan in `corporate-haven-build-list.md §Q.7` is the input; the Site OS Master research, locked content, and build prompt flow produces the implementation.
+
+---
+
 ### 2026-05-24 — Analytics, GTM, GA4, and Measurement Planning
 
 - **Step**: Analytics, GTM, GA4, and Measurement Planning

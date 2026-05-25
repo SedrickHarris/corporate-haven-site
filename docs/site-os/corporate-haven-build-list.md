@@ -123,6 +123,7 @@ Authoritative list of every approved final slug grouped by content layer. Once a
 - `/services/travel-nurse-housing-cleveland/`
 - `/services/medical-professional-housing-cleveland/`
 - `/services/medical-student-housing-cleveland/`
+- `/services/contract-worker-housing-cleveland/`
 
 ### Property Pages
 
@@ -288,7 +289,27 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 4 — Comparison and Decision Pages
+### PHASE 4: Core Service Expansion
+
+**Purpose**: Strengthen and complete the core service surface that supports Cleveland mid-term housing demand. This phase introduces Contract Worker Housing as a dedicated supporting service SEO page and revisits four service pages whose canonical implementation lives in earlier phases.
+
+**Pages**:
+
+1. `/services/mid-term-rentals-cleveland/` (canonical build in Phase 2; Phase 4 may expand or strengthen rather than duplicate)
+2. `/services/medical-professional-housing-cleveland/` (canonical build in Phase 3; Phase 4 may expand or strengthen rather than duplicate)
+3. `/services/medical-student-housing-cleveland/` (canonical build in Phase 3; Phase 4 may expand or strengthen rather than duplicate)
+4. `/services/temporary-family-housing-cleveland/` (canonical build in Phase 2; Phase 4 may expand or strengthen rather than duplicate)
+5. `/services/contract-worker-housing-cleveland/` (NEW supporting service page; parent hub is `/services/corporate-housing-cleveland/`)
+
+**Why this phase matters**: This phase rounds out the core service surface so every primary audience identified in `docs/site-os/corporate-haven-build-context.md §5` has a dedicated landing page using the final Cleveland-specific slug pattern. Contract Worker Housing is the most underserved audience in the prior phase plan; this phase makes it explicit.
+
+**Phase 4 vs Phase 2 / Phase 3 note**: Four of the five listed pages already have canonical build slots in Phase 2 (homepage hub cards) or Phase 3 (fastest ROI search pages). Do not rebuild those pages in Phase 4. Phase 4 enriches them with content depth, FAQ expansion, internal-link tightening, and any cross-cluster linking that becomes obvious once the hub-and-spoke structure is live. Phase 4 originates Contract Worker Housing as a brand-new page.
+
+**Goal targets**: SEO supporting-page depth, AEO audience-specific Q&A surface, conversion routing for contract worker / consultant / project-team audiences, internal linking density across the Corporate Housing cluster (Section Q below).
+
+---
+
+### PHASE 5 — Comparison and Decision Pages
 
 **Purpose**: Capture decision-stage visitors comparing housing options and remove objections before conversion.
 
@@ -307,7 +328,7 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 5 — Hospital Housing Expansion
+### PHASE 6 — Hospital Housing Expansion
 
 **Purpose**: Expand high-intent local healthcare housing reach without implying official hospital partnerships.
 
@@ -331,7 +352,7 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 6 — Location and Neighborhood Cluster
+### PHASE 7 — Location and Neighborhood Cluster
 
 **Purpose**: Expand Cleveland-area GEO visibility and neighborhood-level topical coverage.
 
@@ -350,7 +371,7 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 7 — Resource Center and Guides
+### PHASE 8 — Resource Center and Guides
 
 **Purpose**: Build AEO, featured snippet, PAA, and LLM-friendly educational content.
 
@@ -373,7 +394,7 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 8 — FAQ Clusters and Answer Engine Content
+### PHASE 9 — FAQ Clusters and Answer Engine Content
 
 **Purpose**: Create focused FAQ pages that answer user questions by audience and intent.
 
@@ -391,7 +412,7 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 9 — Checklists and Conversion Assets
+### PHASE 10 — Checklists and Conversion Assets
 
 **Purpose**: Create practical conversion assets that help users take action and support lead capture.
 
@@ -409,7 +430,7 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 10 — Glossary and Topical Authority Expansion
+### PHASE 11 — Glossary and Topical Authority Expansion
 
 **Purpose**: Create definition-based content that improves topical authority and LLM/entity understanding.
 
@@ -429,7 +450,7 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 11 — Technical SEO, Indexing, and Entity Reinforcement
+### PHASE 12 — Technical SEO, Indexing, and Entity Reinforcement
 
 **Purpose**: Strengthen crawlability, structured data, tracking readiness, and search engine submission workflows.
 
@@ -454,7 +475,7 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
-### PHASE 12 — Analytics, GTM, GA4, and Measurement System
+### PHASE 13 — Analytics, GTM, GA4, and Measurement System
 
 **Purpose**: Implement a structured analytics system that tracks user engagement, housing intent, local intent, content authority, and conversion behavior across the Corporate Haven website.
 
@@ -714,6 +735,151 @@ This roadmap is the input to step 1. Steps 2–9 produce the content lock for th
 
 ---
 
-Corporate Haven — Build List v1.0
-Last updated: 2026-05-24
-Authored from: Build List Expansion and Launch-to-Scale Phase Plan decision (2026-05-24)
+## Q. Cluster Internal-Linking Structure and Contract Worker Housing Page Plan (2026-05-24)
+
+This section adds the cluster-level internal-linking structure introduced when Contract Worker Housing Cleveland joined the build plan, plus the homepage audience grid link mapping, plus the detailed planning block for the Contract Worker page itself. Read alongside Sections D, E, F, and H.
+
+### Q.1 Homepage Hub Card Strategy (clarification)
+
+The homepage uses 6 hub or pathway cards, not simple service cards. Each homepage card links to a hub or high-intent parent page. Supporting SEO pages sit beneath or connect from those hubs through internal links.
+
+The 6 approved homepage hub cards (unchanged from Section D):
+
+1. Mid-Term Rentals: `/services/mid-term-rentals-cleveland/`
+2. Corporate Housing: `/services/corporate-housing-cleveland/`
+3. Travel Nurse & Medical Housing: `/services/healthcare-housing-cleveland/`
+4. Student & Medical Student Housing: `/services/student-housing-cleveland/`
+5. Insurance Relocation Housing: `/services/insurance-relocation-housing-cleveland/`
+6. Family & Transitional Housing: `/services/temporary-family-housing-cleveland/`
+
+Rule: homepage cards are conversion pathways and topical hubs. Each homepage card links to a hub or high-intent parent page. Supporting SEO pages sit beneath or connect from those hubs through internal links, not from the homepage card grid directly.
+
+### Q.2 Updated Supporting Service SEO Pages
+
+Adds `/services/contract-worker-housing-cleveland/` to the supporting service SEO page list (mirrored in Section E):
+
+- `/services/travel-nurse-housing-cleveland/`
+- `/services/medical-professional-housing-cleveland/`
+- `/services/medical-student-housing-cleveland/`
+- `/services/contract-worker-housing-cleveland/`
+
+### Q.3 Corporate Housing Cluster
+
+**Parent hub**: `/services/corporate-housing-cleveland/`
+
+**Supporting pages**:
+
+- `/services/contract-worker-housing-cleveland/`
+
+**Potential future pages, not approved for build yet**:
+
+- `/services/corporate-relocation-housing-cleveland/`
+- `/services/project-team-housing-cleveland/`
+- `/services/workforce-housing-cleveland/`
+
+**Internal links**:
+
+- Corporate Housing hub should link to Contract Worker Housing.
+- Contract Worker Housing should link back to Corporate Housing hub.
+- Contract Worker Housing should link to Mid-Term Rentals where relevant.
+- Contract Worker Housing should link to Check Availability.
+- Contract Worker Housing may link to Corporate Housing vs Hotels when the comparison page exists.
+- Contract Worker Housing may link to furnished housing checklist when the checklist page exists.
+
+### Q.4 Healthcare Housing Cluster
+
+**Parent hub**: `/services/healthcare-housing-cleveland/`
+
+**Supporting pages**:
+
+- `/services/travel-nurse-housing-cleveland/`
+- `/services/medical-professional-housing-cleveland/`
+- `/housing-near-hospitals/`
+- `/housing-near-cleveland-clinic/`
+- `/housing-near-university-hospitals-cleveland/`
+
+### Q.5 Student Housing Cluster
+
+**Parent hub**: `/services/student-housing-cleveland/`
+
+**Supporting pages**:
+
+- `/services/medical-student-housing-cleveland/`
+- `/housing-near-case-western-reserve/`
+- `/locations/mid-term-rentals-university-circle/`
+
+### Q.6 Homepage Audience Grid Link Strategy
+
+The homepage Audience grid (Section 5 of `app/page.tsx`, "Who stays with Corporate Haven?") should use the following audience-to-page link mapping. Audience grid cards should use subtle contextual links. They should not compete with the 6 homepage hub cards as the primary conversion pathway.
+
+| Audience | Link target |
+|---|---|
+| Traveling professionals | `/services/corporate-housing-cleveland/` |
+| Travel nurses | `/services/travel-nurse-housing-cleveland/` |
+| Medical professionals | `/services/medical-professional-housing-cleveland/` |
+| Healthcare support staff | `/services/healthcare-housing-cleveland/` |
+| Relocating families | `/services/temporary-family-housing-cleveland/` |
+| Insurance relocation guests | `/services/insurance-relocation-housing-cleveland/` |
+| Students and interns | `/services/student-housing-cleveland/` |
+| Families in transition | `/services/temporary-family-housing-cleveland/` |
+| Contract workers | `/services/contract-worker-housing-cleveland/` |
+| Consultants | `/services/corporate-housing-cleveland/` |
+
+Rule (restated): Audience grid cards should use subtle contextual links. They should not compete with the 6 homepage hub cards as the primary conversion pathway. The hub cards are the primary conversion surface; the audience grid is a secondary recognition surface that routes by audience identity.
+
+Implementation note: as of 2026-05-24, the homepage audience grid in `app/page.tsx` does not yet carry per-audience link wrappers. Implementing the per-audience links is a future homepage refinement batch and is out of scope for this documentation update.
+
+### Q.7 Contract Worker Housing Page Plan
+
+**Page**: Contract Worker Housing Cleveland
+
+**URL**: `/services/contract-worker-housing-cleveland/`
+
+**Parent hub**: `/services/corporate-housing-cleveland/`
+
+**Primary audience**: Contract workers, project-based workers, consultants, traveling crews, technical contractors, trade professionals, temporary assignment workers, and field teams.
+
+**Primary intent**: Furnished housing in Cleveland for temporary work assignments, project stays, contract roles, and professional work placements.
+
+**Suggested H1**: Contract Worker Housing in Cleveland, Ohio
+
+**Suggested positioning**: Furnished mid-term housing for project-based workers, trade professionals, consultants, traveling crews, and contract employees who need flexible housing in Cleveland for one to six months.
+
+**Suggested internal links** (matches Q.3 above with the addition of Contact):
+
+- `/services/corporate-housing-cleveland/`
+- `/services/mid-term-rentals-cleveland/`
+- `/compare/corporate-housing-vs-hotels/`
+- `/resources/checklists/furnished-housing-checklist-cleveland/`
+- `/check-availability/`
+- `/contact/`
+
+**No-fake-data cautions**: Do not claim employer partnerships, crew discounts, union affiliation, specific jobsite proximity, guaranteed availability, negotiated workforce rates, or bulk housing options unless verified. See `docs/site-os/no-fake-data-policy.md` for the broader prohibition list.
+
+### Q.8 Final Slug Strategy (additive)
+
+The final slug strategy now includes `/services/contract-worker-housing-cleveland/` (also mirrored in Section E Supporting Service SEO Pages).
+
+Do not add root-level `/contract-worker-housing-cleveland/`.
+
+Do not add short `/services/contract-worker-housing/`.
+
+The redirect policy in Section N continues to apply: redirects are deferred. Final SEO slugs are used from the start. Redirects are only added later if an old published URL, indexed URL, or conflicting internal URL must be preserved.
+
+### Q.9 Analytics Planning Note
+
+The companion `docs/site-os/gtm-ga4-event-taxonomy.md` defines the Phase 13 event taxonomy. When the Homepage Audience Grid Link Strategy in Q.6 is implemented, the audience grid link clicks should be tracked with a dedicated event.
+
+Recommended event for the Contract Workers audience grid card:
+
+- `event`: `audience_grid_click`
+- `audience_type`: `contract_workers`
+- `link_url`: `/services/contract-worker-housing-cleveland/`
+
+The `audience_grid_click` event is not yet defined in the Phase 13 event taxonomy table. Add it (with one entry per audience row in Q.6) when the audience grid implementation batch begins. This planning note does not modify the analytics docs.
+
+---
+
+Corporate Haven Build List v1.1
+Last updated: 2026-05-24 (Contract Worker Housing added, Section Q added, Phase 4 inserted, Phases 4-12 renumbered to 5-13)
+Authored from: Build List Expansion and Launch-to-Scale Phase Plan decision (2026-05-24) + Contract Worker Housing Build List Update (2026-05-24)
