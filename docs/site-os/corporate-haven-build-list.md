@@ -454,6 +454,44 @@ This phase plan replaces and supersedes any older phase plan. Phases run roughly
 
 ---
 
+### PHASE 12 — Analytics, GTM, GA4, and Measurement System
+
+**Purpose**: Implement a structured analytics system that tracks user engagement, housing intent, local intent, content authority, and conversion behavior across the Corporate Haven website.
+
+**Tasks**:
+
+1. Create measurement strategy document. *(✅ `docs/site-os/analytics-measurement-plan.md`, 2026-05-24)*
+2. Create GTM/GA4 event taxonomy. *(✅ `docs/site-os/gtm-ga4-event-taxonomy.md`, 2026-05-24)*
+3. Add GTM container support through an environment variable (`NEXT_PUBLIC_GTM_ID`).
+4. Manage GA4 through GTM unless direct GA4 installation is explicitly approved.
+5. Create dataLayer utility (`lib/analytics/data-layer.ts`).
+6. Create event tracking helper (`lib/analytics/events.ts`).
+7. Track CTA clicks (`check_availability_click`, `contact_click`, `email_click`, `phone_click` when phone is confirmed).
+8. Track homepage hub card clicks (`housing_card_click` × 6 — controlled-vocabulary `housing_type` / `audience_type` per `gtm-ga4-event-taxonomy.md §D`).
+9. Track form starts and submit attempts (`form_start`, `form_step_view`, `form_field_complete`, `form_submit_attempt`, `form_submit_success`, `form_submit_error`).
+10. Track FAQ opens (`faq_open`).
+11. Track email clicks (`email_click` from footer, contact page, anywhere `mailto:` appears).
+12. Track service, property, hospital, location, comparison, resource, checklist, glossary, and FAQ cluster clicks (`service_page_click`, `property_page_click`, `hospital_page_click`, `location_page_click`, `comparison_click`, `resource_click`, `guide_click`, `checklist_click`, `glossary_click`, `faq_cluster_click`).
+13. Define GA4 conversions (`check_availability_click`, `form_start`, `form_submit_success` once endpoint is verified, `contact_click`, `email_click`, `phone_click` when phone is confirmed).
+14. Add GTM testing checklist (Preview mode validation per `gtm-ga4-event-taxonomy.md §G`).
+15. Add GA4 DebugView checklist (event firing verification per `gtm-ga4-event-taxonomy.md §H`).
+16. Add GSC, Bing Webmaster, GBP/GMB, and Apple Business Connect UTM alignment notes (`analytics-measurement-plan.md §J`).
+
+**Why this phase matters**: This phase turns the website into a measurable growth system. It allows Corporate Haven to understand what content drives traffic, what pages create housing intent, what CTAs produce leads, and what topics support SEO, AEO, GEO, LLM visibility, and conversion.
+
+**Goal targets**: GA4 measurability for every conversion event · clean GSC + Bing Webmaster + GBP/GMB + Apple Business Connect attribution via UTM strategy · LLM/AI-assistant traffic visibility through acquisition reports · housing-intent and content-authority depth measurement · privacy-safe tracking with no PII in any event parameter.
+
+**References**:
+
+- `docs/site-os/analytics-measurement-plan.md` (strategy, goals, event groups, page-type rules, privacy notes, UTM strategy, implementation hold)
+- `docs/site-os/gtm-ga4-event-taxonomy.md` (event naming rules, master taxonomy table, homepage event specs, 6 hub card triples, dataLayer payload examples, GA4 conversion list, GTM + DebugView checklists)
+
+**Implementation hold**: Phase 12 implementation is held until GTM container ID is available, GA4 property is created, GTM event taxonomy is approved, form endpoint/provider decision is confirmed, and privacy/consent requirements are reviewed (`analytics-measurement-plan.md §L`).
+
+**Status**: 2/16 tasks complete (planning documents authored). 14 tasks pending until implementation hold lifts.
+
+---
+
 ## G. Page Type Schema Map
 
 Recommended JSON-LD schema by page type. All schema must match visible content character-for-character. Do not emit any schema for fields not visible on the page.

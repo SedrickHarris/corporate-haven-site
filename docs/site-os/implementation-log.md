@@ -27,6 +27,45 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-24 — Analytics, GTM, GA4, and Measurement Planning
+
+- **Step**: Analytics, GTM, GA4, and Measurement Planning
+- **Date**: 2026-05-24
+- **Phase / Tier**: Phase D — Phase 12 prerequisite (planning artifacts for `docs/site-os/corporate-haven-build-list.md §F Phase 12`)
+- **Workflow**: Fast Build Batch under standing approval; documentation-only update authoring the analytics measurement strategy and event taxonomy contract
+- **Scope**: documentation only
+- **Files changed (6)**:
+  - `docs/site-os/analytics-measurement-plan.md` — **NEW FILE** (12 sections A–L: Purpose · Measurement Goals · Recommended Tracking Stack · Implementation Decision · Event Groups (5 groups, 30+ events) · Recommended GA4 Conversion Events · Standard Event Parameters · Page Type Measurement Rules · Privacy and Consent Notes · UTM Strategy · Future Implementation Files · Analytics Implementation Hold)
+  - `docs/site-os/gtm-ga4-event-taxonomy.md` — **NEW FILE** (8 sections A–H: Event Naming Rules · Master Event Taxonomy Table (28 events) · Homepage Event Details (7 specs) · Six Homepage Hub Card Events (controlled-vocabulary triples per card) · Example dataLayer Payloads (8 examples) · GA4 Recommended Conversions · GTM Testing Checklist · GA4 DebugView Checklist)
+  - `docs/site-os/corporate-haven-build-list.md` — added PHASE 12 (Analytics, GTM, GA4, and Measurement System) between Phase 11 and Section G; 16-task list with implementation hold and references to the two planning docs
+  - `docs/site-os/corporate-haven-build-context.md` — appended new §20 "Analytics and Measurement Planning (2026-05-24)" with reference to the two planning docs and the hold conditions; version bumped v1.3 → v1.4
+  - `docs/site-os/implementation-log.md` — this entry
+  - `docs/site-os/changelog/project-changelog.md` — new top entry
+- **Files NOT touched** (per scope rule): `app/page.tsx`, `app/layout.tsx`, all `components/**/*.tsx`, `lib/constants/site.ts`, `lib/constants/seo.ts`, `lib/constants/routes.ts`, `app/globals.css`, `tailwind.config.ts`, `package.json`, `package-lock.json`, `next.config.mjs`, `public/`, all `.claude/` configuration, `node_modules/`, `.next/`, `out/`, Site OS Master.
+- **Notes**:
+  - Analytics measurement plan created (`analytics-measurement-plan.md`)
+  - GTM/GA4 event taxonomy created (`gtm-ga4-event-taxonomy.md`)
+  - Phase 12 added to build list with 16-task implementation plan and explicit hold conditions
+  - GTM and GA4 not implemented in this batch — no GTM bootstrap script, no GA4 inline tag, no dependencies
+  - No scripts added (`app/layout.tsx` untouched; no inline `<Script>` blocks, no third-party loads)
+  - No environment variables added (`NEXT_PUBLIC_GTM_ID` documented in plan but not introduced as a build-time variable; `.env.example` not created)
+  - No `app/layout.tsx` changes
+  - No analytics dependencies added (`@next/third-parties`, `react-gtm-module`, `gtag.js`, etc. — none added to `package.json`)
+- **Analytics IDs status**: GTM container ID MISSING — FLAGGED. GA4 Measurement ID MISSING — FLAGGED. Form endpoint MISSING — FLAGGED. All three are Phase 12 implementation prerequisites per `analytics-measurement-plan.md §L`.
+- **Privacy / no-PII discipline documented**: `analytics-measurement-plan.md §I` and `gtm-ga4-event-taxonomy.md §A` both explicitly forbid passing names, emails, phone numbers, medical status, insurance details, or private relocation details into GTM/GA4 events. Form field tracking records field name only, never field value. `cta_text` and `link_url` may carry the visible display email `contact@corporatehaven.net` and the `mailto:` href, but never values typed by users.
+- **Event taxonomy summary**: 28 events across 5 groups — Core Engagement (7), Conversion (10), Housing Intent (6), Local Intent (5), Content Authority (6). 6 GA4 recommended conversions: `check_availability_click`, `form_start`, `form_submit_success` (when endpoint live), `contact_click`, `email_click`, `phone_click` (when phone confirmed).
+- **6 hub card tracking triples documented** (`gtm-ga4-event-taxonomy.md §D`): one `housing_type` + `audience_type` + `card_title` + `link_url` quadruple per card, matching the 6 homepage hubs shipped in commit `eea4d87`. These are stable identifiers for reporting and must not be paraphrased across releases.
+- **UTM strategy documented** for GBP/GMB, Bing Places, Apple Business Connect, social profiles, email, and paid campaigns (`analytics-measurement-plan.md §J`). Lowercase / hyphen-delimited; never used on internal links.
+- **No source code changed**: zero `.ts` / `.tsx` / `.css` / `.mjs` / `.json` / `package.json` edits. Homepage `app/page.tsx` unchanged from commit `eea4d87`. Components untouched. Constants untouched. Build artifacts regenerate identically.
+- **No fake data added**: zero invented business claims. All 14 MISSING — FLAGGED items in §12–§13 of `corporate-haven-build-context.md` remain unchanged; GTM and GA4 IDs join the hold list as Phase 12 prerequisites.
+- **Cross-repo**: Site OS Master verified untouched (HEAD `36f9092`, clean tree) before and after the batch.
+- **Commit hash**: pending.
+- **Next step**: Two reasonable paths —
+  1. **Phase 1 page batch** — pick the next Phase 1 page (`/about/`, `/contact/`, `/check-availability/`, `/faq/`, `/services/`, `/properties/`, `/properties/somerset/`, `/cleveland-ohio/`, `/privacy-policy/`, `/terms/`) and run the Site OS Master research → locked content → build prompt flow. The homepage card CTAs currently link to non-existent Phase 2 hub destinations; Phase 1 + Phase 2 page work is the highest-impact next move.
+  2. **Phase 12 implementation prerequisites** — collect the GTM container ID, create the GA4 property, confirm the form endpoint/provider, and review privacy/consent requirements. When all four resolve, Phase 12 implementation can begin per the 16-task list in `corporate-haven-build-list.md §F Phase 12`.
+
+---
+
 ### 2026-05-24 — Homepage 6 Hub Card and Internal Link Update
 
 - **Step**: Homepage 6 Hub Card and Internal Link Update

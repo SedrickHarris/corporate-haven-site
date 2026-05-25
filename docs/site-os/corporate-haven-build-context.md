@@ -460,6 +460,19 @@ The build list does not write code, generate copy, or author schema. It points t
 
 ---
 
-Corporate Haven — Build Context v1.3
-Last updated: 2026-05-24 (Expanded Build List and Launch-to-Scale Roadmap added — §19)
-Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23) + Final SEO Slug Strategy decision (2026-05-24) + Expanded Build List and Launch-to-Scale Roadmap decision (2026-05-24)
+## 20. Analytics and Measurement Planning (2026-05-24)
+
+- **Analytics planning docs created**: `docs/site-os/analytics-measurement-plan.md` (strategy, goals, 5 event groups, page-type rules, privacy notes, UTM strategy, implementation hold) and `docs/site-os/gtm-ga4-event-taxonomy.md` (event naming rules, 28-event master taxonomy table, homepage event specs, 6 hub card triples, dataLayer payload examples, GA4 conversion list, GTM + DebugView checklists). Both files are the contract for Phase 12 (`docs/site-os/corporate-haven-build-list.md §F Phase 12`).
+- **GTM and GA4 are planned but not yet implemented**. No GTM bootstrap script in `app/layout.tsx`. No GA4 inline tag. No analytics dependencies in `package.json`. No `lib/analytics/` directory. No `.env` files with analytics IDs. The plan is the precondition; implementation lands only after the hold lifts.
+- **GTM ID is MISSING — FLAGGED**. Owner provides the GTM container ID. When available, it is consumed via `NEXT_PUBLIC_GTM_ID` build-time environment variable — never hardcoded in source.
+- **GA4 Measurement ID is MISSING — FLAGGED**. GA4 is configured through GTM unless the owner explicitly approves a direct GA4 install.
+- **Final form endpoint is MISSING — FLAGGED**. Until the endpoint is implemented and verified, `form_submit_attempt` is the most reliable proxy for "user tried to convert"; `form_submit_success` does not become an active GA4 conversion until the endpoint resolves.
+- **No analytics code should be added until** the GTM container ID and GA4 Measurement ID are available, the GTM event taxonomy is approved, the form endpoint decision is confirmed, the homepage 6-card structure is implemented (✅ commit `eea4d87`), and privacy/consent requirements are reviewed. Full hold list at `analytics-measurement-plan.md §L`.
+
+The 14 launch blockers and 12 content blockers in §12–§13 of this document carry forward unchanged. The analytics IDs (GTM, GA4) join that hold list as Phase 12 prerequisites.
+
+---
+
+Corporate Haven — Build Context v1.4
+Last updated: 2026-05-24 (Analytics and Measurement Planning added — §20)
+Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23) + Final SEO Slug Strategy decision (2026-05-24) + Expanded Build List and Launch-to-Scale Roadmap decision (2026-05-24) + Analytics and Measurement Planning decision (2026-05-24)

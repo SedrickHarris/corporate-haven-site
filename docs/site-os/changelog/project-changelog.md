@@ -4,6 +4,88 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-24 — Analytics, GTM, GA4, and Measurement Planning Added
+
+**Workflow phase**: Phase D — Phase 12 planning prerequisite (planning artifacts for `docs/site-os/corporate-haven-build-list.md §F Phase 12`)
+
+### Summary
+
+Analytics, GTM, GA4, and measurement planning added. Two new strategy documents author the full Phase 12 implementation contract — strategy, event taxonomy, dataLayer payload examples, GA4 conversion list, GTM testing checklists. Documentation-only batch — no analytics code added, no GTM bootstrap, no GA4 install, no dependencies, no environment variables, no `app/layout.tsx` edits, no homepage changes, no navigation changes, no email changes, no schema helper changes, no Site OS Master changes.
+
+### What's Added
+
+- **Measurement plan created** (`docs/site-os/analytics-measurement-plan.md`) — 12 sections A–L: Purpose · Measurement Goals · Recommended Tracking Stack (GTM + GA4 + GSC + Bing Webmaster + GBP/GMB UTMs + Apple Business Connect + Cloudflare Pages) · Implementation Decision (env-var GTM ID, GA4 through GTM) · Event Groups (5 groups, 30+ events) · Recommended GA4 Conversion Events · Standard Event Parameters · Page Type Measurement Rules (14 page types) · Privacy and Consent Notes (no PII, no field values) · UTM Strategy · Future Implementation Files · Analytics Implementation Hold.
+- **Event taxonomy created** (`docs/site-os/gtm-ga4-event-taxonomy.md`) — 8 sections A–H: Event Naming Rules · Master Event Taxonomy Table (28 events with trigger / parameters / GA4 conversion flag / notes) · Homepage Event Details (7 detailed specs) · Six Homepage Hub Card Events (controlled-vocabulary `housing_type` / `audience_type` / `card_title` / `link_url` triple per card) · Example dataLayer Payloads (8 JSON examples) · GA4 Recommended Conversions · GTM Testing Checklist · GA4 DebugView Checklist.
+- **Phase 12 added to build list** (`docs/site-os/corporate-haven-build-list.md §F Phase 12`) — 16-task implementation plan: create measurement strategy doc · create event taxonomy · add GTM env-var support · manage GA4 through GTM · create dataLayer utility · create event tracking helper · track CTA clicks · track 6 hub card clicks · track form events · track FAQ opens · track email clicks · track service/property/hospital/location/comparison/resource/checklist/glossary/FAQ cluster clicks · define GA4 conversions · GTM testing checklist · GA4 DebugView checklist · GSC/Bing Webmaster/GBP/Apple Business Connect UTM alignment notes. 2/16 tasks complete (planning documents authored); 14 tasks held until prerequisites resolve.
+- **Build context §20 added** (`docs/site-os/corporate-haven-build-context.md §20 + version bump to v1.4`) — references the planning docs and documents the implementation hold conditions.
+
+### Implementation Held Until
+
+- **GTM container ID** is available (MISSING — FLAGGED)
+- **GA4 property** is created and Measurement ID provisioned (MISSING — FLAGGED)
+- **GTM event taxonomy** is approved (`gtm-ga4-event-taxonomy.md` reviewed and signed off by owner)
+- **Form endpoint / provider** decision is confirmed (MISSING — FLAGGED — required before `form_submit_success` becomes an active GA4 conversion)
+- **Homepage 6-card structure** is implemented (✅ DONE — commit `eea4d87`)
+- **Privacy / consent requirements** are reviewed (consent mode posture, cookie banner if any, regional rules)
+
+### What Did NOT Change
+
+- ❌ No analytics code added
+- ❌ No GTM bootstrap script
+- ❌ No GA4 inline tag
+- ❌ No `lib/analytics/` directory created
+- ❌ No environment variables introduced (`NEXT_PUBLIC_GTM_ID` documented in plan only)
+- ❌ No `.env.example` file added
+- ❌ No analytics dependencies added (`package.json` and `package-lock.json` unchanged)
+- ❌ No `app/layout.tsx` edits
+- ❌ No `app/page.tsx` edits (homepage 6-card section from commit `eea4d87` unchanged)
+- ❌ No component changes
+- ❌ No `lib/constants/{site,routes,seo}.ts` changes
+- ❌ No `app/globals.css`, `tailwind.config.ts`, `next.config.mjs`, `tsconfig.json`, `postcss.config.mjs` changes
+- ❌ No `public/` changes
+- ❌ No navigation changes
+- ❌ No email changes
+- ❌ No schema helper changes
+- ❌ No redirects added
+- ❌ No Site OS Master changes
+
+### Files Changed (6)
+
+- `docs/site-os/analytics-measurement-plan.md` (**NEW** — measurement strategy)
+- `docs/site-os/gtm-ga4-event-taxonomy.md` (**NEW** — event taxonomy contract)
+- `docs/site-os/corporate-haven-build-list.md` (Phase 12 added between Phase 11 and Section G)
+- `docs/site-os/corporate-haven-build-context.md` (new §20 + version bump to v1.4)
+- `docs/site-os/implementation-log.md` (new top entry)
+- `docs/site-os/changelog/project-changelog.md` (this entry)
+
+### Privacy / No-PII Discipline
+
+Both planning docs explicitly forbid passing names, emails, phone numbers, medical status, insurance details, or private relocation details into GTM/GA4 event parameters. Form-field tracking records field name only (e.g. `email`), never field value. `cta_text` and `link_url` may carry the visible display email (`contact@corporatehaven.net`) and the `mailto:` href, but never user-typed values. Consent-mode-aware behavior is the planned posture when consent tools land.
+
+### Validation
+
+- `npm run type-check`: PASS (documentation-only change, no source touched)
+- `npm run lint`: PASS
+- `npm run build`: PASS
+- Static export: `out/index.html` regenerates identically (no source changes)
+
+### Cross-Repo
+
+Site OS Master untouched (HEAD `36f9092`, clean tree).
+
+### Commit
+
+Pending — `docs(analytics): add GTM GA4 measurement plan`.
+
+### Next Step
+
+Two reasonable paths:
+
+1. **Phase 1 page batch** — pick the next Phase 1 page and run the Site OS Master research → locked content → build prompt flow. The homepage card CTAs currently link to non-existent Phase 2 hub destinations; Phase 1 + Phase 2 page work is the highest-impact next move.
+2. **Phase 12 implementation prerequisites** — collect the GTM container ID, create the GA4 property, confirm the form endpoint/provider, review privacy/consent requirements. When all four resolve, Phase 12 implementation can begin per the 16-task list in `corporate-haven-build-list.md §F Phase 12`.
+
+---
+
 ## 2026-05-24 — Homepage 6 Hub Cards and Final Internal Link Strategy Live
 
 **Workflow phase**: Phase 2 Homepage Hub Card prerequisite (per `docs/site-os/corporate-haven-build-list.md §F Phase 2`)
