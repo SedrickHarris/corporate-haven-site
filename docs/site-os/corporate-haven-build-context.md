@@ -431,6 +431,35 @@ Examples:
 
 ---
 
-Corporate Haven — Build Context v1.2
-Last updated: 2026-05-24 (Final SEO Slug Strategy added — §18)
-Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23) + Final SEO Slug Strategy decision (2026-05-24)
+## 19. Expanded Build List and Launch-to-Scale Roadmap (2026-05-24)
+
+The single-source-of-truth master roadmap for Corporate Haven's launch and scale content architecture is now `docs/site-os/corporate-haven-build-list.md`. Any new-page or scope question should start from that file.
+
+The build list now includes:
+
+- **Phase 0–Phase 11 launch-to-scale build phases** — from foundation governance through technical SEO / entity reinforcement (replaces and supersedes any older ad-hoc phase plan)
+- **Six homepage hub cards** — Mid-Term Rentals, Corporate Housing, Travel Nurse & Medical Housing (new `/services/healthcare-housing-cleveland/`), Student & Medical Student Housing (new `/services/student-housing-cleveland/`), Insurance Relocation Housing, Family & Transitional Housing (new `/services/temporary-family-housing-cleveland/`) — positioned as conversion pathways and topical hubs, not just service cards
+- **Resource center** — `/resources/`, `/resources/guides/`, `/resources/checklists/`, `/resources/glossary/` and their child pages
+- **FAQ clusters** — five audience-and-intent-focused `/faqs/{topic}-cleveland/` pages alongside the main `/faq/` hub
+- **Checklists / lead magnets** — four `/resources/checklists/{topic}-checklist-cleveland/` pages for engagement, lead capture, and sales enablement
+- **Glossary** — six `/resources/glossary/{term}/` pages for definition-query SEO and LLM entity reinforcement
+- **Page-type schema map** — recommended JSON-LD per page type (homepage / hub / service / hospital / comparison / property / resource article / glossary), with hard rules against unverified AggregateRating/Review/price/offer/availability/partner/endorsement schema
+- **Internal linking rules** — hub-and-spoke structure with Check Availability and Contact links required on every revenue page
+- **Conversion module rules** — module set required on every revenue page (above-the-fold CTA, trust bullets, who-this-is-for, what-is-included, best-fit, FAQ, related pages, closing CTA)
+- **AEO / featured snippet / PAA rules** — direct-answer intros, scannable H2 questions, snippet-shaped elements, voice-search phrasing
+- **LLM search and entity rules** — six points every major page must clearly state (who / what / where / who-the-page-serves / what-makes-it-useful / next-step)
+- **GBP / GMB and Apple Search alignment rules** — consistent NAP, deferred phone/address/hours, GBP-website parity
+- **Hospital language caution** — proximity-only phrasing; no implied partnerships, preferred-vendor, affiliation, or endorsement language for any Cleveland hospital system
+- **Redirect policy** — restated; deferred unless an old or conflicting URL must be preserved
+- **No-fake-data carry-forward** — phone, address, hours, logo, photography, testimonials, ratings, pricing, licenses, form endpoint still MISSING — FLAGGED
+- **Future page workflow rule** — every new page follows the 12-step Site OS Master workflow (research → keyword research → SEO/AEO/GEO strategy → page outline → final locked copy → schema plan → internal link plan → image plan → Claude Code build prompt → QA → validation → commit and push)
+
+The build list does not write code, generate copy, or author schema. It points to the Site OS Master prompts that do those things and tells those prompts which page is up next.
+
+**Read order for new-page batches**: start with `docs/site-os/corporate-haven-build-list.md`, then this build context, then the relevant Site OS Master research prompt, then the relevant locked content prompt, then run validation and commit.
+
+---
+
+Corporate Haven — Build Context v1.3
+Last updated: 2026-05-24 (Expanded Build List and Launch-to-Scale Roadmap added — §19)
+Authored from: Phase A intake report (2026-05-23, CLEARED WITH FLAGS) + Brand/Nav/Email decisions (2026-05-23) + Final SEO Slug Strategy decision (2026-05-24) + Expanded Build List and Launch-to-Scale Roadmap decision (2026-05-24)

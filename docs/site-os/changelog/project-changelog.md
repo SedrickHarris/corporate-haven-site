@@ -4,6 +4,91 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-24 — Expanded Build List and Launch-to-Scale Roadmap Documented
+
+**Workflow phase**: Phase D — documentation-only planning batch (between Final SEO Slug Strategy commit `f8856a2` and Phase 2 page implementation)
+
+### Summary
+
+Corporate Haven expanded build list and launch-to-scale roadmap documented. New master roadmap file `docs/site-os/corporate-haven-build-list.md` created; build context references it via a new §19. Documentation-only batch — no new pages built, no homepage copy changed, no navigation changed, no email changed, no schema helpers changed, no styling changed, no route constants changed, no redirects added, no Site OS Master changes.
+
+### What's Added
+
+- **Phase plan expanded to Phase 0 through Phase 11**:
+  - Phase 0 — Foundation and Governance (substantially complete)
+  - Phase 1 — Launch Core and Conversion Foundation (1/11 pages live)
+  - Phase 2 — Homepage Hub Card Pages (6 pages)
+  - Phase 3 — Fastest ROI Search Pages (5 pages)
+  - Phase 4 — Comparison and Decision Pages (6 pages)
+  - Phase 5 — Hospital Housing Expansion (4 net-new + 2 referenced from Phase 3)
+  - Phase 6 — Location and Neighborhood Cluster (6 pages)
+  - Phase 7 — Resource Center and Guides (10 pages including hub)
+  - Phase 8 — FAQ Clusters and Answer Engine Content (5 pages)
+  - Phase 9 — Checklists and Conversion Assets (5 pages including hub)
+  - Phase 10 — Glossary and Topical Authority Expansion (7 pages including hub)
+  - Phase 11 — Technical SEO, Indexing, and Entity Reinforcement (tasks, not pages)
+- **Six homepage hub cards documented** — Mid-Term Rentals · Corporate Housing · Travel Nurse & Medical Housing (new `/services/healthcare-housing-cleveland/`) · Student & Medical Student Housing (new `/services/student-housing-cleveland/`) · Insurance Relocation Housing · Family & Transitional Housing (new `/services/temporary-family-housing-cleveland/`) — positioned as conversion pathways and topical hubs, not just service cards
+- **Additional content layers added**:
+  - Resource center (`/resources/`, `/resources/guides/`, `/resources/checklists/`, `/resources/glossary/`)
+  - FAQ clusters (`/faqs/{topic}-cleveland/` × 5)
+  - Hospital area guides (`/resources/guides/housing-near-{hospital}-guide/` × 4)
+  - Checklists / lead magnets (`/resources/checklists/{topic}-checklist-cleveland/` × 4)
+  - Glossary (`/resources/glossary/{term}/` × 6)
+- **Technical SEO and entity reinforcement phase added** (Phase 11) — `app/sitemap.ts`, `app/robots.ts`, canonical verification, schema validation, metadata QA, internal link QA, GSC + Bing Webmaster + Apple Business Connect + Apple Maps + GBP + knowledge panel alignment checklists
+- **Page-type schema map** — per-type JSON-LD recommendations (homepage / hub / service / hospital / comparison / property / resource article / glossary) with hard rules against AggregateRating, Review, price, offer, availability, partner, and endorsement schema until verified
+- **Internal linking rules** — hub-and-spoke, child-back-to-parent, Check Availability + Contact on every revenue page
+- **Conversion module rules** — 9 modules required on every revenue page
+- **AEO / featured snippet / PAA rules** — direct-answer intros, scannable H2 questions, snippet-shaped elements, voice-search phrasing
+- **LLM search and entity rules** — six points every major page must clearly state (who / what / where / who-the-page-serves / what-makes-it-useful / next-step)
+- **GBP / GMB and Apple Search alignment rules**
+- **Hospital language caution** — proximity-only phrasing; no implied partnerships, preferred-vendor, affiliation, or endorsement
+- **Redirect policy** — restated; deferred unless old or conflicting URLs
+- **No-fake-data carry-forward** — phone, address, hours, logo, photography, testimonials, ratings, pricing, licenses, form endpoint still MISSING — FLAGGED
+- **Future page workflow rule** — 12-step Site OS Master flow (research → keyword research → SEO/AEO/GEO strategy → page outline → final locked copy → schema plan → internal link plan → image plan → Claude Code build prompt → QA → validation → commit and push)
+
+### No Source Code Changed
+
+- ❌ No `app/page.tsx` edits
+- ❌ No component changes
+- ❌ No `lib/constants/{site,routes,seo}.ts` changes
+- ❌ No `app/globals.css`, `tailwind.config.ts`, `next.config.mjs`, `tsconfig.json`, `postcss.config.mjs` changes
+- ❌ No `package.json` / `package-lock.json` changes
+- ❌ No `public/` changes
+- ❌ No navigation changes
+- ❌ No email changes
+- ❌ No schema helper changes
+- ❌ No redirects added
+- ❌ No Site OS Master changes
+- ❌ No `.claude/`, `node_modules/`, `.next/`, `out/` staged
+
+### Files Changed (4)
+
+- `docs/site-os/corporate-haven-build-list.md` (**NEW** — master roadmap)
+- `docs/site-os/corporate-haven-build-context.md` (new §19 + version bump to v1.3)
+- `docs/site-os/implementation-log.md` (new top entry)
+- `docs/site-os/changelog/project-changelog.md` (this entry)
+
+### Carry-Forward
+
+`lib/constants/routes.ts` `SERVICES` still exposes the 5-entry Cleveland-specific slug array from commit `f8856a2`. Migration to the 6-hub structure (introducing `/services/healthcare-housing-cleveland/`, `/services/student-housing-cleveland/`, `/services/temporary-family-housing-cleveland/`) happens at the start of Phase 2 in an explicit routes.ts edit batch — out of scope for this documentation update.
+
+### Cross-Repo
+
+Site OS Master untouched (HEAD `36f9092`, clean tree).
+
+### Commit
+
+Pending — `docs(plan): expand Corporate Haven launch and scale roadmap`.
+
+### Next Step
+
+Two reasonable starting points:
+
+1. **Phase 1 page batch** — pick the next Phase 1 page (`/about/`, `/contact/`, `/check-availability/`, `/faq/`, `/services/`, `/properties/`, `/properties/somerset/`, `/cleveland-ohio/`, `/privacy-policy/`, `/terms/`) and run the Site OS Master research → locked content → build prompt flow on it.
+2. **Phase 2 routes prerequisite** — update `lib/constants/routes.ts` `SERVICES` from the 5-entry structure to the 6-hub structure so the homepage `ServiceCard` grid emits the 6-hub URLs ahead of Phase 2 page builds; the 4 hardcoded inline `<Link>` calls in `app/page.tsx` body copy can be migrated to the new Cleveland-specific slugs in the same batch.
+
+---
+
 ## 2026-05-24 — Final SEO Slug Strategy Approved and Documented
 
 **Workflow phase**: Phase D — documentation and route planning decision batch (between STEP 10B-Implement homepage and Batch 2 page work)
