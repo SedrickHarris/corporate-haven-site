@@ -4,6 +4,79 @@ Rolling changelog for the Corporate Haven website build. Per-tier and per-launch
 
 ---
 
+## 2026-05-24 — Homepage 6 Hub Cards and Final Internal Link Strategy Live
+
+**Workflow phase**: Phase 2 Homepage Hub Card prerequisite (per `docs/site-os/corporate-haven-build-list.md §F Phase 2`)
+
+### Summary
+
+Homepage updated with 6 hub cards and final internal link strategy. `lib/constants/routes.ts` migrated to 6-hub structure. All `/services/` references in `app/page.tsx` now use the final Cleveland-specific slugs — zero short-slug variants remain in the built HTML.
+
+### What Shipped
+
+- **6 homepage hub cards** in a new Section 2: Mid-Term Rentals · Corporate Housing · Travel Nurse & Medical Housing · Student & Medical Student Housing · Insurance Relocation Housing · Family & Transitional Housing — each with locked title, description, custom CTA label ("Explore X"), and Cleveland-specific CTA URL.
+- **New section heading**: `Housing options built around your stay`.
+- **New section description**: `Choose the path that best matches your stay, then check availability when you are ready. Corporate Haven organizes furnished housing around the people who need it most.`
+- **Card grid**: 3-col desktop / 2-col tablet / 1-col mobile (responsive Tailwind utilities); polished card design with hover-lift + border-accent + shadow on focus/hover.
+- **Image placeholders** on every card (`ServiceImagePlaceholder aspect="aspect-[16/10]"`) with `TODO: Replace with owner-supplied property or service photography` comment. No real or AI-generated imagery.
+- **Inline body-copy links migrated**: the 4 hardcoded inline `<Link>` calls in Sections 3, 5 (×2), and 7 now use Cleveland-specific slugs (`/services/mid-term-rentals-cleveland`, `/services/travel-nurse-housing-cleveland`, `/services/insurance-relocation-housing-cleveland`, `/services/mid-term-rentals-cleveland`).
+- **`lib/constants/routes.ts` `SERVICES` migrated 5 → 6 entries**: added `healthcare-housing-cleveland`, `student-housing-cleveland`, `temporary-family-housing-cleveland`; dropped `travel-nurse-housing-cleveland` and `medical-professional-housing-cleveland` (these reappear as Phase 3 Supporting Service SEO Pages with their own data when those pages get built per `docs/site-os/corporate-haven-build-list.md §E + §F Phase 3`).
+
+### Files Changed (4)
+
+- `app/page.tsx` (`SERVICES`/`ServiceCard` imports removed; new `HUB_CARDS` constant added with locked card data; Section 2 markup replaced with inline 6-card grid; 4 inline body-copy `<Link>` hrefs migrated to Cleveland-specific slugs)
+- `lib/constants/routes.ts` (`SERVICES` array migrated to 6-hub structure with updated comment header)
+- `docs/site-os/implementation-log.md` (new top entry)
+- `docs/site-os/changelog/project-changelog.md` (this entry)
+
+### Side Effect (Intentional)
+
+Removing the two service entries from `SERVICES` also removes them from the footer's Housing column (`NAV_FOOTER_HOUSING` spreads `SERVICES.map(...)`). The footer's Housing column now lists the 6 hubs instead of the prior 5 services. This matches the Phase 2 architecture decision in `docs/site-os/corporate-haven-build-list.md §D + §H`. `Footer.tsx` itself was not edited.
+
+### What Did NOT Change
+
+- ❌ Navigation labels and structure (`Header.tsx` untouched — Corporate Haven wordmark → `/`, primary nav Services / Properties / Cleveland / About / FAQ / Contact, Check Availability CTA all unchanged in rendered HTML; `Tenant Portal` / `Tenant Requests` / `Leasing Survey` strings still absent)
+- ❌ Email (`contact@corporatehaven.net` visible + `mailto:contact@inbox.corporatehaven.net` href — both unchanged)
+- ❌ Metadata (meta title, meta description, canonical, robots, Open Graph, Twitter card all identical to commit `60b4dd7`)
+- ❌ FAQ Q+A (all 10 verbatim)
+- ❌ Schema (4 JSON-LD blocks: Organization × 1, LocalBusiness × 1, WebSite × 1, FAQPage × 1)
+- ❌ Hero H1, hero subheadline, 6 trust bullets, Check Availability CTA, Somerset disclosure (all locked content)
+- ❌ Component files (`ServiceCard.tsx`, `ServiceImagePlaceholder.tsx`, `SectionHeader.tsx`, `Header.tsx`, `Footer.tsx`, `HeroSection.tsx`, `CTASection.tsx`, `FAQSection.tsx`, `QuoteFormPlaceholder.tsx`)
+- ❌ Other constants (`lib/constants/site.ts`, `lib/constants/seo.ts`)
+- ❌ Configs (`app/layout.tsx`, `app/globals.css`, `tailwind.config.ts`, `next.config.mjs`, `tsconfig.json`, `postcss.config.mjs`)
+- ❌ Package files (`package.json`, `package-lock.json`) — zero new dependencies; no `framer-motion`
+- ❌ `public/`, Site OS Master, `.claude/`, `node_modules/`, `.next/`, `out/` (staging)
+- ❌ Redirects (still deferred per `docs/site-os/corporate-haven-build-context.md §18.9 + §19`)
+
+### Validation
+
+- `npm run type-check`: PASS
+- `npm run lint`: PASS (`✔ No ESLint warnings or errors`)
+- `npm run build`: PASS (`Compiled successfully in 3.2s`, 4 static pages, `Exporting (2/2)`)
+- Static export: `out/index.html` 120,313 bytes (was 115,422 — +4,891 bytes from the 6-card hub section)
+- 36-item QA grep audit on built HTML: all 36 pass
+
+### No-Fake-Data
+
+Zero invented business claims. Phone, address, hours, brand logo SVG, OG image, Somerset photography, form endpoint, testimonials, license/insurance/registration, GBP URL, social profiles, final font choice, per-segment messaging, owner/founder name — all remain MISSING — FLAGGED.
+
+### Cross-Repo
+
+Site OS Master untouched (HEAD `36f9092`, clean tree).
+
+### Commit
+
+Pending — `feat(homepage): add six hub cards and final service links`.
+
+### Next Step
+
+The homepage card CTAs currently link to non-existent destinations. Highest-priority next moves:
+
+1. **Phase 2 hub page implementation** — pick one of the 6 hub URLs and run the Site OS Master research → locked content → build prompt flow on it. Suggested first hub: Mid-Term Rentals or Corporate Housing (broadest commercial-investigation intent + cleanest to scope).
+2. **Phase 1 page batch** — build the remaining Phase 1 pages (`/about/`, `/contact/`, `/check-availability/`, `/faq/`, `/services/`, `/properties/`, `/properties/somerset/`, `/cleveland-ohio/`, `/privacy-policy/`, `/terms/`) per `docs/site-os/corporate-haven-build-list.md §F Phase 1`.
+
+---
+
 ## 2026-05-24 — Expanded Build List and Launch-to-Scale Roadmap Documented
 
 **Workflow phase**: Phase D — documentation-only planning batch (between Final SEO Slug Strategy commit `f8856a2` and Phase 2 page implementation)

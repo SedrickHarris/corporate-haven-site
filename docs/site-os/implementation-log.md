@@ -27,6 +27,49 @@ The setup prompt at `site-os-master/prompts/client-repo-prompt-system-setup-prom
 
 ## Entries
 
+### 2026-05-24 — Homepage 6 Hub Card and Internal Link Update
+
+- **Step**: Homepage 6 Hub Card and Internal Link Update
+- **Date**: 2026-05-24
+- **Phase**: Phase 2 Homepage Hub Card prerequisite (per `docs/site-os/corporate-haven-build-list.md §F Phase 2`)
+- **Scope**: `app/page.tsx` card section + inline link migration, `lib/constants/routes.ts` 6-hub migration
+- **Files changed**:
+  - `app/page.tsx`
+  - `lib/constants/routes.ts`
+  - `docs/site-os/implementation-log.md`
+  - `docs/site-os/changelog/project-changelog.md`
+- **Notes**:
+  - 6 homepage hub cards implemented with approved titles, descriptions, CTAs, and final SEO URLs (Mid-Term Rentals → Corporate Housing → Travel Nurse & Medical Housing → Student & Medical Student Housing → Insurance Relocation Housing → Family & Transitional Housing). Cards built inline in `app/page.tsx` (not via `ServiceCard` component) because the existing `ServiceCard` hard-codes a "Learn more" CTA and does not accept a per-card `ctaLabel` prop — inline keeps the edit scope to the approved 4 files.
+  - `lib/constants/routes.ts` `SERVICES` array migrated from 5-entry to 6-entry structure. Added: `healthcare-housing-cleveland`, `student-housing-cleveland`, `temporary-family-housing-cleveland`. Dropped: `travel-nurse-housing-cleveland`, `medical-professional-housing-cleveland` (these reappear as Phase 3 Supporting Service SEO Pages with their own data when those pages get built).
+  - Final SEO service slugs used throughout `app/page.tsx`. All 10 `/services/` href values in the file are Cleveland-specific; 6 in the new `HUB_CARDS` constant, 4 in inline body-copy `<Link>` references (Sections 3, 5, 5, 7 — anchors "mid-term rentals in Cleveland", "furnished housing for travel nurses", "insurance relocation housing", "furnished mid-term rentals").
+  - Short service slugs removed from all homepage links: zero matches for `/services/mid-term-rentals/`, `/services/corporate-housing/`, `/services/travel-nurse-housing/`, `/services/medical-professional-housing/`, `/services/medical-student-housing/`, `/services/insurance-relocation-housing/`, `/services/temporary-family-housing/` in built `out/index.html`.
+  - Card grid: 3 columns desktop (`lg:grid-cols-3`), 2 columns tablet (`sm:grid-cols-2`), 1 column mobile (default `grid-cols-1`); responsive Tailwind utilities.
+  - Image placeholders used on all 6 cards: `<ServiceImagePlaceholder aspect="aspect-[16/10]" />` at the top of each card. Each card includes the comment `{/* TODO: Replace with owner-supplied property or service photography */}`. Placeholder component is `aria-hidden="true"`, contains no text/letters/fake imagery.
+  - Card markup: each card is a single outer `<Link>` (accessible name = title + description + CTA label combined) wrapping `ServiceImagePlaceholder` (top) → `<h3>` title → `<p>` description → CTA label with `→` arrow (`aria-hidden`). Hover: subtle lift (`-translate-y-0.5`) + border accent (`border-brand-primary`) + shadow (`shadow-lg`). Focus: visible 2px brand-primary outline.
+  - Section heading: `Housing options built around your stay` (locked, exact).
+  - Section description: `Choose the path that best matches your stay, then check availability when you are ready. Corporate Haven organizes furnished housing around the people who need it most.` (locked, exact).
+  - Heading hierarchy still valid: 1× H1 (hero) + 8× H2 (services / what-is / what's-included / who-we-serve / somerset / cleveland / faq / final-CTA) + 6× H3 (hub card titles — was 5, now 6 since the new hub structure has 6 cards). No skipped levels.
+- **What was NOT changed**:
+  - No navigation changes (Header.tsx untouched — rendered HTML still has Corporate Haven wordmark → `/`, primary nav Services / Properties / Cleveland / About / FAQ / Contact, Check Availability CTA). `Tenant Portal` / `Tenant Requests` / `Leasing Survey` strings still absent from rendered HTML.
+  - Footer's `NAV_FOOTER_HOUSING` automatically reflects the 6 hubs via the existing `...SERVICES.map(...)` spread in `routes.ts` — this is the desired Phase 2 architecture (`docs/site-os/corporate-haven-build-list.md §H Internal Linking Rules`). Footer.tsx itself was not edited.
+  - No email changes (footer display `contact@corporatehaven.net`, href `mailto:contact@inbox.corporatehaven.net` — both still rendered).
+  - No metadata changes (title, description, canonical, robots, Open Graph, Twitter card all identical to commit `60b4dd7`).
+  - No FAQ changes (all 10 Q+A render character-for-character — `FAQPage` JSON-LD emitted by `FAQSection` from the same `FAQS` array).
+  - No schema changes (4 JSON-LD blocks: Organization × 1, LocalBusiness × 1, WebSite × 1, FAQPage × 1).
+  - No `lib/constants/site.ts`, `lib/constants/seo.ts`, `components/cards/ServiceCard.tsx`, `components/media/ServiceImagePlaceholder.tsx`, `components/sections/SectionHeader.tsx`, `components/layout/Header.tsx`, `components/layout/Footer.tsx`, `app/layout.tsx`, `app/globals.css`, `tailwind.config.ts`, `next.config.mjs`, `package.json`, `package-lock.json`, `public/` edits. The `ServiceCard` and `SERVICES` imports were removed from `app/page.tsx` since cards are now built inline; `ServiceCard` itself remains exported and usable elsewhere.
+  - No `framer-motion` added (zero references in rendered HTML). Existing `TODO-MOTION:` comments (if any) left in place.
+  - No fake data added: no phone, address, hours, pricing, reviews, testimonials, or invented claims.
+  - No real or AI-generated images added.
+- **Side-effect to flag**: Removing `travel-nurse-housing-cleveland` and `medical-professional-housing-cleveland` from `SERVICES` also removes them from the footer's Housing column (which is dynamically spread from `SERVICES`). The 6 hub entries now appear in the footer Housing column instead of the prior 5 services. This matches the Phase 2 architecture decision in `docs/site-os/corporate-haven-build-list.md §D + §H`. When the Phase 3 supporting service pages (`/services/travel-nurse-housing-cleveland`, `/services/medical-professional-housing-cleveland`, `/services/medical-student-housing-cleveland`) get built, they will link from inside their parent hub (Healthcare Housing) rather than from the global footer column.
+- **Validation**: `npm run type-check` PASS (no output) · `npm run lint` PASS (`✔ No ESLint warnings or errors`) · `npm run build` PASS (`Compiled successfully in 3.2s`, 4 static pages, `Exporting (2/2)`).
+- **Static export**: `out/index.html` regenerated — 120,313 bytes (was 115,422 bytes pre-batch; +4,891 bytes from the 6-card hub section and per-card CTA labels).
+- **36-item QA grep audit on built HTML**: all 36 pass. Section heading + description exact; all 6 card titles + CTA labels exact; all 6 hub CTA URLs Cleveland-specific; zero short-slug variants; Hero H1 + subheadline + 6 trust bullets + Check Availability + Somerset disclosure + all 10 FAQ Q+A + meta title + meta description + canonical + 4 JSON-LD blocks (1 each) + footer email visible + footer email href + navigation labels + excluded nav items absent + no `framer-motion` + no `tel:` link + image placeholders + TODO comments — all verified.
+- **Cross-repo**: Site OS Master untouched (HEAD `36f9092`, clean tree).
+- **Commit hash**: pending.
+- **Next step**: Two reasonable paths — (1) Phase 1 page batch (`/about/`, `/contact/`, `/check-availability/`, `/faq/`, `/services/`, `/properties/`, `/properties/somerset/`, `/cleveland-ohio/`, `/privacy-policy/`, `/terms/`); or (2) Phase 2 hub page implementation — pick one of the 6 hub URLs (`/services/mid-term-rentals-cleveland/`, `/services/corporate-housing-cleveland/`, `/services/healthcare-housing-cleveland/`, `/services/student-housing-cleveland/`, `/services/insurance-relocation-housing-cleveland/`, `/services/temporary-family-housing-cleveland/`) and run the Site OS Master research → locked content → build prompt flow on it. The homepage card CTAs currently link to non-existent destinations, so Phase 2 page builds are the highest-priority next move.
+
+---
+
 ### 2026-05-24 — Expanded Build List and Launch-to-Scale Roadmap
 
 - **Phase / Tier**: Phase D — documentation-only planning batch (between Final SEO Slug Strategy commit `f8856a2` and Phase 2 page implementation)

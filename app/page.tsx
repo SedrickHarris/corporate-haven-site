@@ -4,11 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { CTASection } from '@/components/sections/CTASection';
 import { SectionHeader } from '@/components/sections/SectionHeader';
 import { FAQSection } from '@/components/sections/FAQSection';
-import { ServiceCard } from '@/components/cards/ServiceCard';
 import { ServiceImagePlaceholder } from '@/components/media/ServiceImagePlaceholder';
 import { QuoteFormPlaceholder } from '@/components/forms/QuoteFormPlaceholder';
 import {
-  SERVICES,
   PROPERTIES,
   PRIMARY_CTA,
   SECONDARY_CTA,
@@ -44,6 +42,53 @@ export const metadata: Metadata = {
 // Source of truth: docs/site-os/outputs/homepage-step10b-build-prompt.md
 // CONTENT LOCK RULE: any change to text below requires a new content-lock batch.
 // ============================================================================
+
+// 6 homepage hub cards per docs/site-os/corporate-haven-build-list.md §D.
+// Titles, descriptions, CTA labels, and CTA URLs are LOCKED. Do not paraphrase.
+const HUB_CARDS = [
+  {
+    title: 'Mid-Term Rentals',
+    description:
+      'Fully furnished, all-inclusive housing for stays longer than a hotel and shorter than a yearly lease.',
+    ctaLabel: 'Explore mid-term rentals',
+    href: '/services/mid-term-rentals-cleveland',
+  },
+  {
+    title: 'Corporate Housing',
+    description:
+      'Move-in-ready furnished housing for business assignments, project teams, contractors, and relocating professionals in Cleveland.',
+    ctaLabel: 'Explore corporate housing',
+    href: '/services/corporate-housing-cleveland',
+  },
+  {
+    title: 'Travel Nurse & Medical Housing',
+    description:
+      'Flexible furnished housing for travel nurses, healthcare workers, resident physicians, and medical professionals on assignment in Cleveland.',
+    ctaLabel: 'Explore healthcare housing',
+    href: '/services/healthcare-housing-cleveland',
+  },
+  {
+    title: 'Student & Medical Student Housing',
+    description:
+      'Furnished housing for students, interns, medical students, and program-based stays that do not fit a hotel or annual lease.',
+    ctaLabel: 'Explore student housing',
+    href: '/services/student-housing-cleveland',
+  },
+  {
+    title: 'Insurance Relocation Housing',
+    description:
+      'Furnished housing for guests displaced from their primary home who need a stable, move-in-ready place to stay.',
+    ctaLabel: 'Explore insurance relocation housing',
+    href: '/services/insurance-relocation-housing-cleveland',
+  },
+  {
+    title: 'Family & Transitional Housing',
+    description:
+      'Flexible furnished housing for relocating families, families in transition, renovations, life changes, and temporary housing needs.',
+    ctaLabel: 'Explore family housing',
+    href: '/services/temporary-family-housing-cleveland',
+  },
+] as const;
 
 const HERO_BULLETS = [
   'Fully furnished — move in with nothing',
@@ -206,24 +251,41 @@ export default function HomePage() {
         layout="split"
       />
 
-      {/* SECTION 2 — SERVICES PREVIEW GRID */}
+      {/* SECTION 2 — HOUSING OPTIONS HUB CARDS (6 cards per build list §D) */}
       <section className="bg-white">
         <div className="mx-auto max-w-container px-4 py-16 sm:px-6 sm:py-20 lg:px-10">
           <SectionHeader
-            eyebrow="What we offer"
-            title="Housing built for the people who book it"
-            description="Five core offerings shaped around the audiences who stay with us."
+            title="Housing options built around your stay"
+            description="Choose the path that best matches your stay, then check availability when you are ready. Corporate Haven organizes furnished housing around the people who need it most."
           />
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s) => (
-              <ServiceCard
-                key={s.slug}
-                name={s.name}
-                description={s.shortDescription}
-                href={s.href}
-              />
+          <ul
+            role="list"
+            className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {HUB_CARDS.map((card) => (
+              <li key={card.href} className="flex">
+                <Link
+                  href={card.href}
+                  className="group flex w-full flex-col overflow-hidden rounded-2xl border border-brand-border bg-white transition-all hover:-translate-y-0.5 hover:border-brand-primary hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary"
+                >
+                  {/* TODO: Replace with owner-supplied property or service photography */}
+                  <ServiceImagePlaceholder aspect="aspect-[16/10]" />
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-display text-lg font-semibold text-brand-ink">
+                      {card.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm text-gray-600">
+                      {card.description}
+                    </p>
+                    <p className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-primary transition-all group-hover:gap-2">
+                      {card.ctaLabel}
+                      <span aria-hidden="true">&rarr;</span>
+                    </p>
+                  </div>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -240,7 +302,7 @@ export default function HomePage() {
             <p>
               Corporate Haven provides fully furnished, all-inclusive{' '}
               <Link
-                href="/services/mid-term-rentals"
+                href="/services/mid-term-rentals-cleveland"
                 className="font-medium text-brand-primary underline-offset-4 hover:underline"
               >
                 mid-term rentals in Cleveland
@@ -312,14 +374,14 @@ export default function HomePage() {
           <p className="mt-4 max-w-3xl text-sm text-gray-700">
             Explore{' '}
             <Link
-              href="/services/travel-nurse-housing"
+              href="/services/travel-nurse-housing-cleveland"
               className="font-medium text-brand-primary underline-offset-4 hover:underline"
             >
               furnished housing for travel nurses
             </Link>{' '}
             or{' '}
             <Link
-              href="/services/insurance-relocation-housing"
+              href="/services/insurance-relocation-housing-cleveland"
               className="font-medium text-brand-primary underline-offset-4 hover:underline"
             >
               insurance relocation housing
@@ -400,7 +462,7 @@ export default function HomePage() {
             <p>
               Corporate Haven provides{' '}
               <Link
-                href="/services/mid-term-rentals"
+                href="/services/mid-term-rentals-cleveland"
                 className="font-medium text-brand-primary underline-offset-4 hover:underline"
               >
                 furnished mid-term rentals

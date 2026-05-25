@@ -14,38 +14,48 @@ export type Service = {
   audienceCritical?: boolean;
 };
 
-// Service slugs use the final Cleveland-specific SEO pattern
-// `/services/{service-name}-cleveland` per docs/site-os/corporate-haven-build-context.md §18
-// (Final SEO Slug Strategy, 2026-05-24). Do not revert to short slugs as final page targets.
+// SERVICES is the 6-hub homepage card array per
+// docs/site-os/corporate-haven-build-list.md §D "Approved Homepage Hub Cards"
+// (Build List Expansion and Launch-to-Scale Phase Plan, 2026-05-24).
+//
+// Hubs are conversion pathways and topical roots, not individual service cards.
+// Each hub will link to relevant Phase 3 supporting service pages (e.g. the
+// healthcare hub links to /services/travel-nurse-housing-cleveland and
+// /services/medical-professional-housing-cleveland once those Phase 3 pages
+// are built).
+//
+// Slugs follow the Cleveland-specific SEO pattern locked in
+// docs/site-os/corporate-haven-build-context.md §18. Do not revert to short
+// slugs as final page targets.
 export const SERVICES: readonly Service[] = [
   {
     slug: 'mid-term-rentals-cleveland',
     name: 'Mid-Term Rentals',
     href: '/services/mid-term-rentals-cleveland',
     shortDescription:
-      'Fully furnished, all-inclusive housing for stays between a hotel and an annual lease.',
+      'Fully furnished, all-inclusive housing for stays longer than a hotel and shorter than a yearly lease.',
   },
   {
     slug: 'corporate-housing-cleveland',
     name: 'Corporate Housing',
     href: '/services/corporate-housing-cleveland',
     shortDescription:
-      'Move-in-ready housing for corporate assignments, relocations, and project teams.',
+      'Move-in-ready furnished housing for business assignments, project teams, contractors, and relocating professionals in Cleveland.',
   },
   {
-    slug: 'travel-nurse-housing-cleveland',
-    name: 'Travel Nurse Housing',
-    href: '/services/travel-nurse-housing-cleveland',
+    slug: 'healthcare-housing-cleveland',
+    name: 'Travel Nurse & Medical Housing',
+    href: '/services/healthcare-housing-cleveland',
     shortDescription:
-      'Flexible housing close to Cleveland major hospital systems for travel nurses on assignment.',
+      'Flexible furnished housing for travel nurses, healthcare workers, resident physicians, and medical professionals on assignment in Cleveland.',
     audienceCritical: true,
   },
   {
-    slug: 'medical-professional-housing-cleveland',
-    name: 'Medical Professional Housing',
-    href: '/services/medical-professional-housing-cleveland',
+    slug: 'student-housing-cleveland',
+    name: 'Student & Medical Student Housing',
+    href: '/services/student-housing-cleveland',
     shortDescription:
-      'Professional-grade housing for resident physicians, healthcare support staff, and medical professionals.',
+      'Furnished housing for students, interns, medical students, and program-based stays that do not fit a hotel or annual lease.',
     audienceCritical: true,
   },
   {
@@ -53,8 +63,15 @@ export const SERVICES: readonly Service[] = [
     name: 'Insurance Relocation Housing',
     href: '/services/insurance-relocation-housing-cleveland',
     shortDescription:
-      'Move-in-ready housing for displaced guests and insurance-paid relocations.',
+      'Furnished housing for guests displaced from their primary home who need a stable, move-in-ready place to stay.',
     audienceCritical: true,
+  },
+  {
+    slug: 'temporary-family-housing-cleveland',
+    name: 'Family & Transitional Housing',
+    href: '/services/temporary-family-housing-cleveland',
+    shortDescription:
+      'Flexible furnished housing for relocating families, families in transition, renovations, life changes, and temporary housing needs.',
   },
 ] as const;
 
